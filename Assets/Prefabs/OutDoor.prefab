@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe78b6d6affb92d408e5145142e409a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 0}
 --- !u!61 &5962770697263379138
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,9 +158,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 24c70a5864299ee4f8e20804f4bdd27b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30cc9a1c914ee4d418e77f4fc0b9b1cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
