@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GlobalState : MonoBehaviour
 {
+    public GameObject TWall;
+    public GameObject TVoid;
+    public GameObject TInDoor;
+    public GameObject TOutDoor;
+    public GameObject THole;
+
     // Start is called before the first frame update
     void Start()
     {

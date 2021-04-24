@@ -2,3 +2,4 @@ X 	= WALL
 .	= VIDE
 E	= ENTREE
 S	= SORTIE
+T   = TROU
