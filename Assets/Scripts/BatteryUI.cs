@@ -12,6 +12,8 @@ public class BatteryUI : MonoBehaviour
 
     Color backgroundColor;
 
+    bool emptied = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,10 @@ public class BatteryUI : MonoBehaviour
 
         if (rate <= 0f) {
             Background.color = emptyColor;
+            if (!emptied) {
+                GetComponent<AudioSource>().Play();
+            }
+            emptied = true;
         } else {
             Background.color = backgroundColor;
         }
