@@ -1,5 +1,5 @@
-X 	= WALL
-.	= VIDE
-E	= ENTREE
-S	= SORTIE
-T   = TROU
+X = WALL
+. = SOL
+E = ENTREE
+S = SORTIE
+T = TROU
