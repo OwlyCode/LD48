@@ -359,6 +359,7 @@ MonoBehaviour:
   InDoor: {fileID: 1640822238857029719, guid: 27a8e50b8432e3748ab6df061bf602b1, type: 3}
   OutDoor: {fileID: 1640822238857029719, guid: 562dba70c1eca2542a04f05d08d4c0ad, type: 3}
   Hole: {fileID: 1640822238857029719, guid: 7986315fd74d04b41aa4eac1a3f4d88d, type: 3}
+  SockU: {fileID: 1640822238857029719, guid: f73c358f3236cb84fb6537dc1fe4e1cd, type: 3}
   level: level0
 --- !u!4 &1191373811
 Transform:

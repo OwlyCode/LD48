@@ -10,6 +10,7 @@ public class GlobalState : MonoBehaviour
     public GameObject InDoor;
     public GameObject OutDoor;
     public GameObject Hole;
+    public GameObject SockU;
     public string level;
 
     private Vector3 startPosition;
@@ -54,7 +55,7 @@ public class GlobalState : MonoBehaviour
         int maxLength = 0;
 
         GameObject root = new GameObject(level);
-
+        y = lines.Length;
         foreach (string line in lines)
         {
             x = 0;
@@ -96,13 +97,19 @@ public class GlobalState : MonoBehaviour
                         e.name = "Hole ("+x+", "+y + ")";
                         e.transform.parent = root.transform;
                         break;
+                    case '~':
+                        GameObject f = Instantiate(SockU, position, Quaternion.identity);
+                        f.GetComponent<SocketU>().state = this;
+                        f.name = "SocketU ("+x+", "+y + ")";
+                        f.transform.parent = root.transform;
+                        break;
                     default:
                         Debug.Log("Default !");
                         break;
                 }
                 x++;
             }
-            y++;
+            y--;
         }
 
         Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3(maxLength / 2, lines.Length / 2, 0)));
