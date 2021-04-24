@@ -11,6 +11,15 @@ public class Win : MonoBehaviour
     {
         Debug.Log("win");
 
-        state.NextLevel();
+        var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
+        hero.GetComponent<Hero>().Die();
+
+        manager.FadeOut(() => {
+            state.NextLevel();
+            Debug.Log("IN");
+            manager.FadeIn(() => {
+                hero.GetComponent<Hero>().Respawn();
+            });
+        });
     }
 }

@@ -22,18 +22,20 @@ public class Hero : MonoBehaviour
     bool moveUp = false;
     bool moveDown = false;
 
+    bool dead = false;
+
     void Update()
     {
-        if (moveRight && !moving) {
+        if (!dead && moveRight && !moving) {
             Move(Vector3.right);
         }
-        if (moveLeft && !moving) {
+        if (!dead && moveLeft && !moving) {
             Move(Vector3.left);
         }
-        if (moveUp && !moving) {
+        if (!dead && moveUp && !moving) {
             Move(Vector3.up);
         }
-        if (moveDown && !moving) {
+        if (!dead && moveDown && !moving) {
             Move(Vector3.down);
         }
 
@@ -50,6 +52,15 @@ public class Hero : MonoBehaviour
                 onMoveComplete = null;
             }
         }
+    }
+
+    public void Die()
+    {
+        dead = true;
+    }
+    public void Respawn()
+    {
+        dead = false;
     }
 
     public void Freeze()

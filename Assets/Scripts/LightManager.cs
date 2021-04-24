@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LightManager : MonoBehaviour
 {
     const float MAX_BATTERY = 10f;
+    const float START_LIGHT_DURATION = 5f;
 
     private static bool playerLight = false;
     private static bool startLight = false;
@@ -90,7 +91,7 @@ public class LightManager : MonoBehaviour
     }
 
     IEnumerator KillStartLight() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(START_LIGHT_DURATION);
         SetStartLight(false);
     }
 }
