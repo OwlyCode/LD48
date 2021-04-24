@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightManager : MonoBehaviour
 {
@@ -55,20 +56,22 @@ public class LightManager : MonoBehaviour
 
     public static void LightsOff()
     {
+        GameObject.Find("LightShade").GetComponent<Image>().enabled = true;
         var elements = GameObject.FindObjectsOfType<MapElement>();
         foreach(var element in elements) {
             if (element.lightSensitive) {
-                element.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                element.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
     }
 
     public static void LightsOn()
     {
+        GameObject.Find("LightShade").GetComponent<Image>().enabled = false;
         var elements = GameObject.FindObjectsOfType<MapElement>();
         foreach(var element in elements) {
             if (element.lightSensitive) {
-                element.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                element.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
             }
         }
     }
