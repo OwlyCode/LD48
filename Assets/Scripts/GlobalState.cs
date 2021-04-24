@@ -22,25 +22,35 @@ public class GlobalState : MonoBehaviour
         foreach (string line in lines)
         {
             x = 0;
-            foreach (char c in line)
+            foreach (char ch in line)
             {
-                Debug.Log(c);
-                switch (c)
+                Debug.Log(ch);
+                switch (ch)
                 {
                     case '.':
-                        Instantiate(Floor, new Vector3(x, y, 0), Quaternion.identity);
+                        GameObject a = Instantiate(Floor, new Vector3(x, y, 0), Quaternion.identity);
+                        a.name = "Floor ("+x+", "+y + ")";
+                        a.transform.parent = GameObject.Find(FileName).transform;
                         break;
                     case 'X':
-                        Instantiate(Wall, new Vector3(x, y, 0), Quaternion.identity);
+                        GameObject b = Instantiate(Wall, new Vector3(x, y, 0), Quaternion.identity);
+                        b.name = "Wall ("+x+", "+y + ")";
+                        b.transform.parent = GameObject.Find(FileName).transform;
                         break;
                     case 'E':
-                        Instantiate(InDoor, new Vector3(x, y, 0), Quaternion.identity);
+                        GameObject c = Instantiate(InDoor, new Vector3(x, y, 0), Quaternion.identity);
+                        c.name = "InDoor ("+x+", "+y + ")";
+                        c.transform.parent = GameObject.Find(FileName).transform;
                         break;
                     case 'S':
-                        Instantiate(OutDoor, new Vector3(x, y, 0), Quaternion.identity);
+                        GameObject d = Instantiate(OutDoor, new Vector3(x, y, 0), Quaternion.identity);
+                        d.name = "OutDoor ("+x+", "+y + ")";
+                        d.transform.parent = GameObject.Find(FileName).transform;
                         break;
                     case 'T':
-                        Instantiate(Hole, new Vector3(x, y, 0), Quaternion.identity);
+                        GameObject e = Instantiate(Hole, new Vector3(x, y, 0), Quaternion.identity);
+                        e.name = "Hole ("+x+", "+y + ")";
+                        e.transform.parent = GameObject.Find(FileName).transform;
                         break;
                     default:
                         Debug.Log("Default !");
