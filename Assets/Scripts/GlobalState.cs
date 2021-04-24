@@ -130,9 +130,9 @@ public class GlobalState : MonoBehaviour
             bounds.Encapsulate(r.bounds);
         }
 
-        Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3(maxLength / 2, lines.Length / 2, 0)));
+        Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3( bounds.size.x/2, bounds.size.y/2, 0)));
 
-        Camera.main.orthographicSize = Mathf.Max(0.5f + bounds.size.x/2, 0.5f + bounds.size.y/2);
+        Camera.main.orthographicSize = Mathf.Max(1f + bounds.size.x/4, 1f + bounds.size.y/2);
 
         Debug.Log(Camera.main.orthographicSize);
 
