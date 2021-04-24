@@ -1,0 +1,97 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LightManager : MonoBehaviour
+{
+    const float MAX_BATTERY = 10f;
+
+    private static bool playerLight = false;
+    private static bool startLight = false;
+
+    private static float batteryLife = MAX_BATTERY;
+
+    private static LightManager instance;
+
+    void Awake() {
+        instance = this;
+    }
+
+    void Start() {
+        LightManager.RefreshLight();
+    }
+
+    public static void SetStartLight(bool state)
+    {
+        startLight = state;
+
+        if (state) {
+            instance.StopAllCoroutines();
+            instance.StartCoroutine("KillStartLight");
+        }
+
+        RefreshLight();
+    }
+
+    public static void playerLightSwitch()
+    {
+        playerLight = !playerLight;
+
+        if (batteryLife <= 0f) {
+            playerLight = false;
+        }
+
+        RefreshLight();
+    }
+
+    private static void RefreshLight()
+    {
+        if (playerLight || startLight) {
+            LightsOn();
+        } else {
+            LightsOff();
+        }
+    }
+
+    public static void LightsOff()
+    {
+        var elements = GameObject.FindObjectsOfType<MapElement>();
+        foreach(var element in elements) {
+            if (element.lightSensitive) {
+                element.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
+    }
+
+    public static void LightsOn()
+    {
+        var elements = GameObject.FindObjectsOfType<MapElement>();
+        foreach(var element in elements) {
+            if (element.lightSensitive) {
+                element.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (playerLight) {
+            batteryLife -= Time.fixedDeltaTime;
+
+            if (batteryLife <= 0f) {
+                playerLight = false;
+                LightManager.RefreshLight();
+            }
+        }
+    }
+
+    public static float GetBatteryRate()
+    {
+        return batteryLife / MAX_BATTERY;
+    }
+
+    IEnumerator KillStartLight() {
+        yield return new WaitForSeconds(1f);
+        SetStartLight(false);
+    }
+}
