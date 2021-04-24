@@ -53,7 +53,7 @@ public class LightManager : MonoBehaviour
 
     public static void LightsOff()
     {
-        GameObject.Find("LightShade").GetComponent<Image>().enabled = true;
+        GameObject.Find("LightShade").GetComponent<SpriteRenderer>().enabled = true;
         var elements = GameObject.FindObjectsOfType<MapElement>();
         foreach(var element in elements) {
             if (element.lightSensitive) {
@@ -64,7 +64,7 @@ public class LightManager : MonoBehaviour
 
     public static void LightsOn()
     {
-        GameObject.Find("LightShade").GetComponent<Image>().enabled = false;
+        GameObject.Find("LightShade").GetComponent<SpriteRenderer>().enabled = false;
         var elements = GameObject.FindObjectsOfType<MapElement>();
         foreach(var element in elements) {
             if (element.lightSensitive) {
