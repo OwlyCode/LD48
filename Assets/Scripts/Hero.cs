@@ -92,6 +92,7 @@ public class Hero : MonoBehaviour
     public void OnToggleLight()
     {
         LightManager.playerLightSwitch();
+        transform.Find("LightAudioSource").GetComponent<AudioSource>().Play();
     }
 
     private void Move(Vector3 offset)

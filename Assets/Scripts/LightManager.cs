@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LightManager : MonoBehaviour
 {
-    const float MAX_BATTERY = 2f;
+    const float MAX_BATTERY = 6f;
     const float START_LIGHT_DURATION = 5f;
 
     private static bool playerLight = false;
