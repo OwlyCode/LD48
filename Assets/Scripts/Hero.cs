@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    const float MOVEMENT_RATIO = 1f;
+    const float MOVEMENT_RATIO = 0.2f;
 
     private bool lightsOn = false;
 

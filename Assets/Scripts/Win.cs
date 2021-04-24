@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour
 {
-    public string targetLevel;
+    public GlobalState state;
 
     void heroWalkIn(GameObject hero)
     {
         Debug.Log("win");
-        SceneManager.LoadScene(targetLevel);
+
+        state.NextLevel();
     }
 }
