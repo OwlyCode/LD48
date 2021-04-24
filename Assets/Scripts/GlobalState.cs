@@ -117,8 +117,18 @@ public class GlobalState : MonoBehaviour
             y++;
         }
 
+        Bounds bounds = new Bounds(root.transform.position, Vector3.zero);
+
+        foreach(Renderer r in root.GetComponentsInChildren<Renderer>()) {
+            bounds.Encapsulate(r.bounds);
+        }
+
         Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3(maxLength / 2, lines.Length / 2, 0)));
-        Camera.main.orthographicSize = Mathf.Max(maxLength/2, lines.Length/2);
+
+        Camera.main.orthographicSize = Mathf.Max(0.5f + bounds.size.x/2, 0.5f + bounds.size.y/2);
+
+        Debug.Log(Camera.main.orthographicSize);
+
         GameObject.Find("Hero").transform.position = GetStartPosition();
         LightManager.SetStartLight(true);
     }
