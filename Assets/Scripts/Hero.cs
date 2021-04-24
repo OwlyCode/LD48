@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Hero : MonoBehaviour
 {
@@ -14,14 +15,28 @@ public class Hero : MonoBehaviour
 
     private Vector3 target;
 
-    void Start()
-    {
-        // TEMP
-        LightManager.SetStartLight(true);
-    }
+    private Action onMoveComplete;
+
+    bool moveRight = false;
+    bool moveLeft = false;
+    bool moveUp = false;
+    bool moveDown = false;
 
     void Update()
     {
+        if (moveRight && !moving) {
+            Move(Vector3.right);
+        }
+        if (moveLeft && !moving) {
+            Move(Vector3.left);
+        }
+        if (moveUp && !moving) {
+            Move(Vector3.up);
+        }
+        if (moveDown && !moving) {
+            Move(Vector3.down);
+        }
+
         if (moving) {
             movementAmount += Time.deltaTime * MOVEMENT_RATIO;
 
@@ -29,27 +44,40 @@ public class Hero : MonoBehaviour
 
             if (transform.position == target) {
                 moving = false;
+                if (onMoveComplete != null) {
+                    onMoveComplete();
+                }
+                onMoveComplete = null;
             }
         }
     }
 
+    public void Freeze()
+    {
+        moving = false;
+    }
+
     public void OnMoveRight()
     {
-        Move(Vector3.right);
+        moveRight = !moveRight;
+        //Move(Vector3.right);
     }
 
     public void OnMoveLeft()
     {
+        moveLeft = !moveLeft;
         Move(Vector3.left);
     }
 
     public void OnMoveUp()
     {
+        moveUp = !moveUp;
         Move(Vector3.up);
     }
 
     public void OnMoveDown()
     {
+        moveDown = !moveDown;
         Move(Vector3.down);
     }
 
@@ -68,7 +96,6 @@ public class Hero : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, offset, 1.0f);
 
         if (hit.collider != null) {
-            hit.collider.gameObject.SendMessage("heroWalkIn", gameObject, SendMessageOptions.DontRequireReceiver);
 
             var mapElement = hit.collider.gameObject.GetComponent<MapElement>();
 
@@ -76,6 +103,12 @@ public class Hero : MonoBehaviour
                 return;
             }
         }
+
+        onMoveComplete = () => {
+            if (hit.collider != null) {
+                hit.collider.gameObject.SendMessage("heroWalkIn", gameObject, SendMessageOptions.DontRequireReceiver);
+            }
+        };
 
         var grid = transform.parent.GetComponent<Grid>();
         target = grid.GetCellCenterLocal(grid.WorldToCell(transform.position + offset));

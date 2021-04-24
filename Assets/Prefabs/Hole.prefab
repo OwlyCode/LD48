@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3ef149d345751478f347f28be96a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsWalkable: 0
+  IsWalkable: 1
   lightSensitive: 1
 --- !u!114 &2426544124660210737
 MonoBehaviour:
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3be374df212c54daf2b04af9f26d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 0}
 --- !u!61 &6037931691610323601
 BoxCollider2D:
   m_ObjectHideFlags: 0
