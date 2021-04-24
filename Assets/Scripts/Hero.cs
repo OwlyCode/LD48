@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    private bool lightsOn = false;
+
+    void Start() {
+        RefreshLights();
+    }
+
     public void OnMoveRight()
     {
         Move(Vector3.right);
@@ -22,6 +28,42 @@ public class Hero : MonoBehaviour
     public void OnMoveDown()
     {
         Move(Vector3.down);
+    }
+
+    public void OnToggleLight()
+    {
+        lightsOn = !lightsOn;
+
+        RefreshLights();
+    }
+
+    private void RefreshLights()
+    {
+        if (!lightsOn) {
+            LightsOff();
+        } else {
+            LightsOn();
+        }
+    }
+
+    private void LightsOff()
+    {
+        var elements = GameObject.FindObjectsOfType<MapElement>();
+        foreach(var element in elements) {
+            if (element.lightSensitive) {
+                element.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
+    }
+
+    private void LightsOn()
+    {
+        var elements = GameObject.FindObjectsOfType<MapElement>();
+        foreach(var element in elements) {
+            if (element.lightSensitive) {
+                element.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
     }
 
     private void Move(Vector3 offset)

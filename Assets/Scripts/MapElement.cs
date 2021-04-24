@@ -5,4 +5,6 @@ using UnityEngine;
 public class MapElement : MonoBehaviour
 {
     public bool IsWalkable;
+
+    public bool lightSensitive;
 }
