@@ -3,7 +3,7 @@ X......T...X
 X.XXXX.X...X
 X....XX..XXX
 X...TTT...TX
-X...TET~T..X
+X...TETST..X
 X.X...TTTX.X
 X.X.XXX....X
 X.X...X.X..X

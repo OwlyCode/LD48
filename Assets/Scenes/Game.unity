@@ -356,11 +356,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wall: {fileID: 1640822238857029719, guid: f1cf966e8ecc29548a9375edf770cd80, type: 3}
   Floor: {fileID: 1640822238857029719, guid: c384a496dc0df71479dbc14c35477be3, type: 3}
+  FloorAlt: {fileID: 5636377771450628659, guid: 22ed3d5e225fed0438a9518a94e6a0a1, type: 3}
   InDoor: {fileID: 1640822238857029719, guid: 27a8e50b8432e3748ab6df061bf602b1, type: 3}
   OutDoor: {fileID: 1640822238857029719, guid: 562dba70c1eca2542a04f05d08d4c0ad, type: 3}
   Hole: {fileID: 1640822238857029719, guid: 7986315fd74d04b41aa4eac1a3f4d88d, type: 3}
   SockU: {fileID: 1640822238857029719, guid: f73c358f3236cb84fb6537dc1fe4e1cd, type: 3}
-  level: level9
+  level: level0
 --- !u!4 &1191373811
 Transform:
   m_ObjectHideFlags: 0
@@ -566,7 +567,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c3f1c5b0507236740acadcbca28a3e46, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a5e5aad918b897f4babe3dbf69005a34, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class GlobalState : MonoBehaviour
 {
     public GameObject Wall;
     public GameObject Floor;
+    public GameObject FloorAlt;
     public GameObject InDoor;
     public GameObject OutDoor;
     public GameObject Hole;
@@ -59,7 +61,8 @@ public class GlobalState : MonoBehaviour
 
     void SourceLevel(string FileName)
     {
-        string[] lines = File.ReadAllLines("Assets/Levels/" + FileName);
+        string text = Resources.Load<TextAsset>("Levels/" + FileName).text;
+        string[] lines = Regex.Split(text, "\r\n");
         int y = 0;
         int x = 0;
 
@@ -86,6 +89,11 @@ public class GlobalState : MonoBehaviour
                         a.name = "Floor ("+x+", "+y + ")";
                         a.transform.parent = root.transform;
                         break;
+                    case '~':
+                        GameObject aAlt = Instantiate(FloorAlt, position, Quaternion.identity);
+                        aAlt.name = "FloorAlt ("+x+", "+y + ")";
+                        aAlt.transform.parent = root.transform;
+                        break;
                     case 'X':
                         GameObject b = Instantiate(Wall, position, Quaternion.identity);
                         b.name = "Wall ("+x+", "+y + ")";
@@ -109,7 +117,7 @@ public class GlobalState : MonoBehaviour
                         e.name = "Hole ("+x+", "+y + ")";
                         e.transform.parent = root.transform;
                         break;
-                    case '~':
+                    case 'G':
                         GameObject f = Instantiate(SockU, position, Quaternion.identity);
                         f.GetComponent<SocketU>().state = this;
                         f.name = "SocketU ("+x+", "+y + ")";
