@@ -18,10 +18,6 @@ public class LightManager : MonoBehaviour
         instance = this;
     }
 
-    void Start() {
-        LightManager.RefreshLight();
-    }
-
     public static void SetStartLight(bool state)
     {
         startLight = state;

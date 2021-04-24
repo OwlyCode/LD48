@@ -108,6 +108,7 @@ public class GlobalState : MonoBehaviour
         Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3(maxLength / 2, lines.Length / 2, 0)));
         Camera.main.orthographicSize = Mathf.Max(maxLength/2, lines.Length/2);
         GameObject.Find("Hero").transform.position = GetStartPosition();
+        LightManager.SetStartLight(true);
     }
 
     // Start is called before the first frame update

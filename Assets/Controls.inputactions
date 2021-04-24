@@ -11,7 +11,7 @@
                     "id": "bdb72e58-4bbf-4073-a000-07e91f44239c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "MoveDown",
@@ -19,7 +19,7 @@
                     "id": "47853010-fe94-49fc-a60a-aae9d9852964",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "MoveRight",
@@ -27,7 +27,7 @@
                     "id": "0ca73755-3020-44b2-9539-7b2a80a7ccce",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "MoveLeft",
@@ -35,7 +35,7 @@
                     "id": "f93cbd70-0063-4674-9953-bdc75aef0ece",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "ToggleLight",
