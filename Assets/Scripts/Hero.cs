@@ -5,7 +5,7 @@ using System;
 
 public class Hero : MonoBehaviour
 {
-    const float MOVEMENT_RATIO = 0.2f;
+    const float MOVEMENT_RATIO = 4f;
 
     private bool lightsOn = false;
 
@@ -14,6 +14,7 @@ public class Hero : MonoBehaviour
     private float movementAmount;
 
     private Vector3 target;
+    private Vector3 origin;
 
     private Action onMoveComplete;
 
@@ -42,7 +43,7 @@ public class Hero : MonoBehaviour
         if (moving) {
             movementAmount += Time.deltaTime * MOVEMENT_RATIO;
 
-            transform.position = Vector3.Lerp(transform.position, target, movementAmount);
+            transform.position = Vector3.Lerp(origin, target, movementAmount);
 
             if (transform.position == target) {
                 moving = false;
@@ -71,25 +72,21 @@ public class Hero : MonoBehaviour
     public void OnMoveRight()
     {
         moveRight = !moveRight;
-        //Move(Vector3.right);
     }
 
     public void OnMoveLeft()
     {
         moveLeft = !moveLeft;
-        Move(Vector3.left);
     }
 
     public void OnMoveUp()
     {
         moveUp = !moveUp;
-        Move(Vector3.up);
     }
 
     public void OnMoveDown()
     {
         moveDown = !moveDown;
-        Move(Vector3.down);
     }
 
     public void OnToggleLight()
@@ -123,6 +120,7 @@ public class Hero : MonoBehaviour
 
         var grid = transform.parent.GetComponent<Grid>();
         target = grid.GetCellCenterLocal(grid.WorldToCell(transform.position + offset));
+        origin = transform.position;
         movementAmount = 0f;
         moving = true;
     }

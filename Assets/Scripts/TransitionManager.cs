@@ -20,7 +20,7 @@ public class TransitionManager : MonoBehaviour
 
     IEnumerator AfterAnimation(Action callback)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         callback();
     }

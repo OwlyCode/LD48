@@ -11,6 +11,8 @@ public class Trap : MonoBehaviour
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponent<Hero>().Die();
 
+        GetComponentInChildren<SpriteRenderer>().enabled = true;
+
         manager.FadeOut(() => {
             state.RestartLevel();
             hero.transform.position = state.GetStartPosition();
