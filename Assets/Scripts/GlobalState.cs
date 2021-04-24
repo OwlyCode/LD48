@@ -19,6 +19,18 @@ public class GlobalState : MonoBehaviour
         switch(level) {
             case "level0":
                 return "level1";
+            case "level1":
+                return "level2";
+            case "level2":
+                return "level3";
+            case "level3":
+                return "level4";
+            case "level4":
+                return "level5";
+            case "level5":
+                return "level6";
+            case "level6":
+                return "level7";
         }
 
         return "level0";
