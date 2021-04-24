@@ -6,8 +6,10 @@ public class Hero : MonoBehaviour
 {
     private bool lightsOn = false;
 
-    void Start() {
-        RefreshLights();
+    void Start()
+    {
+        // TEMP
+        LightManager.SetStartLight(true);
     }
 
     public void OnMoveRight()
@@ -32,42 +34,12 @@ public class Hero : MonoBehaviour
 
     public void OnToggleLight()
     {
-        lightsOn = !lightsOn;
-
-        RefreshLights();
-    }
-
-    private void RefreshLights()
-    {
-        if (!lightsOn) {
-            LightsOff();
-        } else {
-            LightsOn();
-        }
-    }
-
-    private void LightsOff()
-    {
-        var elements = GameObject.FindObjectsOfType<MapElement>();
-        foreach(var element in elements) {
-            if (element.lightSensitive) {
-                element.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            }
-        }
-    }
-
-    private void LightsOn()
-    {
-        var elements = GameObject.FindObjectsOfType<MapElement>();
-        foreach(var element in elements) {
-            if (element.lightSensitive) {
-                element.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            }
-        }
+        LightManager.playerLightSwitch();
     }
 
     private void Move(Vector3 offset)
     {
+        LightManager.SetStartLight(false);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, offset, 1.0f);
 
         if (hit.collider != null) {
