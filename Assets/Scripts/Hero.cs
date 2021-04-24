@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    const float MOVEMENT_RATIO = 1f;
+
     private bool lightsOn = false;
+
+    private bool moving = false;
+
+    private float movementAmount;
+
+    private Vector3 target;
 
     void Start()
     {
         // TEMP
         LightManager.SetStartLight(true);
+    }
+
+    void Update()
+    {
+        if (moving) {
+            movementAmount += Time.deltaTime * MOVEMENT_RATIO;
+
+            transform.position = Vector3.Lerp(transform.position, target, movementAmount);
+
+            if (transform.position == target) {
+                moving = false;
+            }
+        }
     }
 
     public void OnMoveRight()
@@ -39,6 +60,10 @@ public class Hero : MonoBehaviour
 
     private void Move(Vector3 offset)
     {
+        if (moving) {
+            return;
+        }
+
         LightManager.SetStartLight(false);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, offset, 1.0f);
 
@@ -53,6 +78,8 @@ public class Hero : MonoBehaviour
         }
 
         var grid = transform.parent.GetComponent<Grid>();
-        transform.position = grid.GetCellCenterLocal(grid.WorldToCell(transform.position + offset));
+        target = grid.GetCellCenterLocal(grid.WorldToCell(transform.position + offset));
+        movementAmount = 0f;
+        moving = true;
     }
 }
