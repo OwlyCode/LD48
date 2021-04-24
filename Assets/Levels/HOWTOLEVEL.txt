@@ -3,3 +3,4 @@ X = WALL
 E = ENTREE
 S = SORTIE
 T = TROU
+~ = Socket de Fin
