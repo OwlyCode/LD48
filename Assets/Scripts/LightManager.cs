@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
+    const float MAX_BATTERY = 10f;
+
     private static bool playerLight = false;
     private static bool startLight = false;
+
+    private static float batteryLife = MAX_BATTERY;
 
     private static LightManager instance;
 
@@ -22,6 +26,7 @@ public class LightManager : MonoBehaviour
         startLight = state;
 
         if (state) {
+            instance.StopAllCoroutines();
             instance.StartCoroutine("KillStartLight");
         }
 
@@ -31,6 +36,10 @@ public class LightManager : MonoBehaviour
     public static void playerLightSwitch()
     {
         playerLight = !playerLight;
+
+        if (batteryLife <= 0f) {
+            playerLight = false;
+        }
 
         RefreshLight();
     }
@@ -62,6 +71,23 @@ public class LightManager : MonoBehaviour
                 element.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (playerLight) {
+            batteryLife -= Time.fixedDeltaTime;
+
+            if (batteryLife <= 0f) {
+                playerLight = false;
+                LightManager.RefreshLight();
+            }
+        }
+    }
+
+    public static float GetBatteryRate()
+    {
+        return batteryLife / MAX_BATTERY;
     }
 
     IEnumerator KillStartLight() {
