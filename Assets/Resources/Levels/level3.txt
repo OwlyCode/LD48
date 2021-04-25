@@ -1,3 +1,5 @@
+env: 2
+---
 XXXXXXXXXXXXXXXXXXXXXXXXX
 X.........T..X.......XTSX
 X.X.......X..X.......X..X

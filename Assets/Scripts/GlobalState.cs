@@ -74,7 +74,20 @@ public class GlobalState : MonoBehaviour
     void SourceLevel(string FileName)
     {
         string text = Resources.Load<TextAsset>("Levels/" + FileName).text;
-        string[] lines = Regex.Split(text, "\n");
+
+
+        string[] data = Regex.Split(text, "---");
+        string[] metas = Regex.Split(data[0], "\n");
+
+        foreach (string meta in metas) {
+            string[] parts = meta.Split(':');
+
+            if (parts[0].Trim() == "env") {
+                env = int.Parse(parts[1].Trim());
+            }
+        }
+
+        string[] lines = Regex.Split(data[1], "\n");
         int y = 0;
         int x = 0;
 
