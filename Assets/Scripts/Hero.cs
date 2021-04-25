@@ -68,7 +68,6 @@ public class Hero : MonoBehaviour
     public void Die()
     {
         dead = true;
-        GetComponentInChildren<Animator>().SetTrigger("Idle");
     }
 
     public void Respawn()

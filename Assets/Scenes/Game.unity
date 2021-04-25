@@ -300,6 +300,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1545246291}
     m_Modifications:
+    - target: {fileID: 1991210761296838617, guid: a9a2b0c6859e1c947a828629fbcf26c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8587972839450865636, guid: 9f6c2d966502f7743a53635761cea4f1, type: 3}
     - target: {fileID: 8284294550798457676, guid: a9a2b0c6859e1c947a828629fbcf26c5, type: 3}
       propertyPath: m_Name
       value: Hero

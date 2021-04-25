@@ -26,7 +26,7 @@ public class TidePod : MonoBehaviour
 
         GetComponentInChildren<SpriteRenderer>().enabled = true;
 
-        hero.GetComponentInChildren<Animator>().SetTrigger("Idle");
+        hero.GetComponentInChildren<Animator>().SetTrigger("KO");
 
         manager.Delay(() => {
             manager.FadeOut(() => {

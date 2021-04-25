@@ -330,6 +330,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: charaSprite_9
+      rect:
+        serializedVersion: 2
+        x: 3131
+        y: 2049
+        width: 962
+        height: 1006
+      alignment: 9
+      pivot: {x: 0.46055174, y: 0.47878063}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1014db143461d880800000000000000
+      internalID: -8587972839450865636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: charaSprite_10
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 3175
+        width: 890
+        height: 837
+      alignment: 9
+      pivot: {x: 0.51648045, y: 0.19710316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57275ef4b3e939060800000000000000
+      internalID: 6959079826798244469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
