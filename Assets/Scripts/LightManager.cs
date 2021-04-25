@@ -57,7 +57,14 @@ public class LightManager : MonoBehaviour
         var elements = GameObject.FindObjectsOfType<MapElement>();
         foreach(var element in elements) {
             if (element.lightSensitive) {
-                element.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                var sr = element.gameObject.GetComponentInChildren<SpriteRenderer>();
+                var an = element.gameObject.GetComponentInChildren<Animator>();
+
+                if (sr != null)
+                    sr.enabled = false;
+
+                if (an != null)
+                    an.enabled = false;
             }
         }
     }
@@ -68,7 +75,14 @@ public class LightManager : MonoBehaviour
         var elements = GameObject.FindObjectsOfType<MapElement>();
         foreach(var element in elements) {
             if (element.lightSensitive) {
-                element.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+                var sr = element.gameObject.GetComponentInChildren<SpriteRenderer>();
+                var an = element.gameObject.GetComponentInChildren<Animator>();
+
+                if (sr != null)
+                    sr.enabled = true;
+
+                if (an != null)
+                    an.enabled = true;
             }
         }
     }

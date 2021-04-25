@@ -322,7 +322,9 @@ GameObject:
   - component: {fileID: 8284294550798457677}
   - component: {fileID: 8284294550798457666}
   - component: {fileID: 8284294550798457667}
-  m_Layer: 0
+  - component: {fileID: 6753394745797375752}
+  - component: {fileID: 208903195470887283}
+  m_Layer: 2
   m_Name: Hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,3 +409,40 @@ MonoBehaviour:
   m_DefaultActionMap: Hero
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!70 &6753394745797375752
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284294550798457676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.004830122, y: 0.008049846}
+  m_Size: {x: 0.28425837, y: 0.46869588}
+  m_Direction: 0
+--- !u!50 &208903195470887283
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284294550798457676}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
