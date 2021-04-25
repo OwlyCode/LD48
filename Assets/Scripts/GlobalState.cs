@@ -33,8 +33,11 @@ public class GlobalState : MonoBehaviour
     public GameObject Hole4;
     public GameObject SockU;
     public GameObject TidePod;
+    public GameObject Battery;
     public string level;
     public int env;
+
+    bool disableBattery = false;
 
     private Vector3 startPosition;
 
@@ -71,6 +74,8 @@ public class GlobalState : MonoBehaviour
 
         level = GetNextLevel();
 
+        disableBattery = false;
+
         SourceLevel(level);
     }
     public void RestartLevel()
@@ -78,6 +83,11 @@ public class GlobalState : MonoBehaviour
         Destroy(GameObject.Find(level));
 
         SourceLevel(level);
+    }
+
+    public void DisableBattery()
+    {
+        disableBattery = true;
     }
 
     void SourceLevel(string FileName)
@@ -149,6 +159,17 @@ public class GlobalState : MonoBehaviour
                         GameObject floorBoulder2 = Instantiate(Floor2, position, Quaternion.identity);
                         floorBoulder2.name = "Floor2 ("+x+", "+y + ")";
                         floorBoulder2.transform.parent = root.transform;
+                        break;
+                    case 'B':
+                        if (!disableBattery) {
+                            GameObject b = Instantiate(Battery, position, Quaternion.identity);
+                            b.name = "Battery ("+x+", "+y + ")";
+                            b.transform.parent = root.transform;
+                        }
+
+                        GameObject floorBattery = Instantiate(Floor2, position, Quaternion.identity);
+                        floorBattery.name = "Floor2 ("+x+", "+y + ")";
+                        floorBattery.transform.parent = root.transform;
                         break;
                     case '#':
                         GameObject f4 = Instantiate(Floor4, position, Quaternion.identity);
