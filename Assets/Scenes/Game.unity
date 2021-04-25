@@ -976,6 +976,8 @@ MonoBehaviour:
   Battery: {fileID: 1772168006584894568, guid: c52c896a725ec254e8877a439c1ce7eb, type: 3}
   Panel: {fileID: 679482923}
   Einstein: {fileID: 5406623336686188532, guid: 9fd6d6f6a9aacb144a87c38a1e72d455, type: 3}
+  Rasta: {fileID: 3533952317287047905, guid: bb1451b88cc9500498a9746c08893be1, type: 3}
+  Bas: {fileID: 6504307050205293551, guid: e37d866cf6f9eb84087bac613f1b1bef, type: 3}
   level: level0
   env: 2
   SockBas: {fileID: 9100000, guid: b04cd23eae9817f45b5c2ba69126ff3b, type: 2}

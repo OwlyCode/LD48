@@ -37,6 +37,8 @@ public class GlobalState : MonoBehaviour
     public GameObject Battery;
     public GameObject Panel;
     public GameObject Einstein;
+    public GameObject Rasta;
+    public GameObject Bas;
 
     public string level;
     public int env;
@@ -287,6 +289,26 @@ public class GlobalState : MonoBehaviour
                         floorEinstein.name = "Floor2 ("+x+", "+y + ")";
                         floorEinstein.transform.parent = root.transform;
                         break;
+                    case '2':
+                        GameObject rasta = Instantiate(Rasta, position, Quaternion.identity);
+                        rasta.GetComponent<Sock>().state = this;
+                        rasta.name = "Rasta ("+x+", "+y + ")";
+                        rasta.transform.parent = root.transform;
+
+                        GameObject floorRasta = Instantiate(Floor2, position, Quaternion.identity);
+                        floorRasta.name = "Floor2 ("+x+", "+y + ")";
+                        floorRasta.transform.parent = root.transform;
+                        break;
+                    case '3':
+                        GameObject bas = Instantiate(Bas, position, Quaternion.identity);
+                        bas.GetComponent<Sock>().state = this;
+                        bas.name = "Bas ("+x+", "+y + ")";
+                        bas.transform.parent = root.transform;
+
+                        GameObject floorBas = Instantiate(Floor2, position, Quaternion.identity);
+                        floorBas.name = "Floor2 ("+x+", "+y + ")";
+                        floorBas.transform.parent = root.transform;
+                        break;
                     default:
                         break;
                 }
@@ -368,6 +390,7 @@ public class GlobalState : MonoBehaviour
 
     public void ShowPanel(string AssetString, string SockChooser)
     {
+        GameObject.Find("Hero").GetComponent<Hero>().Lock();
         this.Panel.SetActive(true);
          this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
         Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim(SockChooser)  as RuntimeAnimatorController;
@@ -380,6 +403,7 @@ public class GlobalState : MonoBehaviour
 
     public void HidePanel()
     {
+        GameObject.Find("Hero").GetComponent<Hero>().Unlock();
         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x-6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
     }
 
