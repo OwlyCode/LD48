@@ -24,6 +24,5 @@ public class Trap : MonoBehaviour
                 });
             });
         }, 2f);
-
     }
 }
