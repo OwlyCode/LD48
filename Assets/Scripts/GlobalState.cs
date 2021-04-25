@@ -32,6 +32,7 @@ public class GlobalState : MonoBehaviour
     public GameObject Hole1;
     public GameObject Hole4;
     public GameObject SockU;
+    public GameObject TidePod;
     public string level;
     public int env;
 
@@ -126,6 +127,28 @@ public class GlobalState : MonoBehaviour
                         GameObject f2 = Instantiate(Floor2, position, Quaternion.identity);
                         f2.name = "Floor2 ("+x+", "+y + ")";
                         f2.transform.parent = root.transform;
+                        break;
+                    case 'V':
+                        GameObject tipepodV = Instantiate(TidePod, position, Quaternion.identity);
+                        tipepodV.name = "TidePod ("+x+", "+y + ")";
+                        tipepodV.transform.parent = root.transform;
+                        tipepodV.GetComponent<TidePod>().state = this;
+                        tipepodV.GetComponent<TidePod>().direction = Vector3.up;
+
+                        GameObject floorBoulder = Instantiate(Floor2, position, Quaternion.identity);
+                        floorBoulder.name = "Floor2 ("+x+", "+y + ")";
+                        floorBoulder.transform.parent = root.transform;
+                        break;
+                    case 'H':
+                        GameObject tidepodH = Instantiate(TidePod, position, Quaternion.identity);
+                        tidepodH.name = "TidePod ("+x+", "+y + ")";
+                        tidepodH.transform.parent = root.transform;
+                        tidepodH.GetComponent<TidePod>().state = this;
+                        tidepodH.GetComponent<TidePod>().direction = Vector3.left;
+
+                        GameObject floorBoulder2 = Instantiate(Floor2, position, Quaternion.identity);
+                        floorBoulder2.name = "Floor2 ("+x+", "+y + ")";
+                        floorBoulder2.transform.parent = root.transform;
                         break;
                     case '#':
                         GameObject f4 = Instantiate(Floor4, position, Quaternion.identity);
