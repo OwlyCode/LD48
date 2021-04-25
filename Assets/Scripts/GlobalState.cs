@@ -120,28 +120,20 @@ public class GlobalState : MonoBehaviour
 
     void SourceLevel(string FileName)
     {
-        string text = Resources.Load<TextAsset>("Levels/" + FileName).text;
+        var grid = GameObject.Find("Grid").GetComponent<Grid>();
+        GameObject root = new GameObject(level);
 
+        string text = Resources.Load<TextAsset>("Levels/" + FileName).text;
 
         string[] data = Regex.Split(text, "---");
         string[] metas = Regex.Split(data[0], "\n");
-
-        foreach (string meta in metas) {
-            string[] parts = meta.Split(':');
-
-            if (parts[0].Trim() == "env") {
-                env = int.Parse(parts[1].Trim());
-            }
-        }
 
         string[] lines = Regex.Split(data[1], "\n");
         int y = 0;
         int x = 0;
 
-        var grid = GameObject.Find("Grid").GetComponent<Grid>();
         int maxLength = 0;
 
-        GameObject root = new GameObject(level);
         y = lines.Length;
         foreach (string line in lines)
         {
@@ -275,7 +267,6 @@ public class GlobalState : MonoBehaviour
                         su.transform.parent = root.transform;
                         break;
                     default:
-                        Debug.Log("Default !");
                         break;
                 }
                 x++;
@@ -293,7 +284,30 @@ public class GlobalState : MonoBehaviour
 
         Camera.main.orthographicSize = Mathf.Max(1f + bounds.size.x/4, 1f + bounds.size.y/2);
 
-        Debug.Log(Camera.main.orthographicSize);
+        // After camera resize to avoid fillers moving the camera
+        foreach (string meta in metas) {
+            string[] parts = meta.Split(':');
+
+            if (parts[0].Trim() == "env") {
+                env = int.Parse(parts[1].Trim());
+            }
+
+            if (parts[0].Trim() == "filler") {
+                string[] fillerParts = parts[1].Split('|');
+                var fillerType = int.Parse(fillerParts[0].Trim());
+                var fillerX = int.Parse(fillerParts[1].Trim());
+                var fillerY = int.Parse(fillerParts[2].Trim());
+                var fillerRotation = int.Parse(fillerParts[3].Trim());
+
+                var dictionnary = GameObject.Find("FillerDictionnary").GetComponent<FillerDictionnary>();
+
+                Vector3 fillerPos = grid.GetCellCenterLocal(grid.WorldToCell(new Vector3(fillerX, fillerY, 0)));
+
+                GameObject filler = Instantiate(dictionnary.Fillers[fillerType], fillerPos, Quaternion.Euler(0f, 0f, fillerRotation));
+                filler.name = "Filler " + fillerX + " " + fillerY;
+                filler.transform.parent = root.transform;
+            }
+        }
 
         GameObject.Find("Hero").transform.position = GetStartPosition();
         LightManager.SetStartLight(true);
@@ -308,9 +322,7 @@ public class GlobalState : MonoBehaviour
 
     public void HidePanel()
     {
-        Debug.Log(Panel.transform.position.ToString());
         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x-6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
-        Debug.Log(Panel.transform.position.ToString());
     }
     void InitPanel()
     {

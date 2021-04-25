@@ -28,7 +28,6 @@ public class Intro : MonoBehaviour
 
         hasSkipped = true;
         GameObject.Find("Transition").GetComponent<TransitionManager>().FadeOut(() => {
-            Debug.Log("LEL");
             SceneManager.LoadScene("Game", LoadSceneMode.Single);
         });
     }

@@ -11,7 +11,7 @@ public class TidePod : MonoBehaviour
 
     public Vector3 direction = Vector3.up;
 
-    bool stopped =  false;
+    bool stopped = false;
 
     public GameObject hitFx;
 
@@ -23,6 +23,10 @@ public class TidePod : MonoBehaviour
 
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponent<Hero>().Die();
+
+        if (LightManager.isPlayerLightOn()) {
+            LightManager.playerLightSwitch();
+        }
 
         GetComponentInChildren<SpriteRenderer>().enabled = true;
 
