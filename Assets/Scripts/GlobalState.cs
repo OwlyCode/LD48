@@ -16,6 +16,14 @@ public class GlobalState : MonoBehaviour
     public GameObject WallG4;
     public GameObject WallH1;
     public GameObject WallH4;
+    public GameObject WallBD1;
+    public GameObject WallBD4;
+    public GameObject WallHD1;
+    public GameObject WallHD4;
+    public GameObject WallBG1;
+    public GameObject WallBG4;
+    public GameObject WallHG1;
+    public GameObject WallHG4;
     public GameObject Floor1;
     public GameObject Floor2;
     public GameObject Floor4;
@@ -149,6 +157,26 @@ public class GlobalState : MonoBehaviour
                         GameObject wg  = Instantiate(((env==1)?WallG1:WallG4), position, Quaternion.identity);
                         wg.name = "WallG ("+x+", "+y + ")";
                         wg.transform.parent = root.transform;
+                        break;
+                   case '┌':
+                        GameObject whg = Instantiate(((env==1)?WallHG1:WallHG4), position, Quaternion.identity);
+                        whg.name = "WallHG ("+x+", "+y + ")";
+                        whg.transform.parent = root.transform;
+                        break;
+                    case '╖':
+                        GameObject whd = Instantiate(((env==1)?WallHD1:WallHD4), position, Quaternion.identity);
+                        whd.name = "WallHD ("+x+", "+y + ")";
+                        whd.transform.parent = root.transform;
+                        break;
+                    case '╝':
+                        GameObject wbd = Instantiate(((env==1)?WallBD1:WallBD4), position, Quaternion.identity);
+                        wbd.name = "WallBD ("+x+", "+y + ")";
+                        wbd.transform.parent = root.transform;
+                        break;
+                    case '╘':
+                        GameObject wbg  = Instantiate(((env==1)?WallBG1:WallBG4), position, Quaternion.identity);
+                        wbg.name = "WallBG ("+x+", "+y + ")";
+                        wbg.transform.parent = root.transform;
                         break;
                     case 'E':
                         GameObject i = Instantiate(InDoor, position, Quaternion.identity);
