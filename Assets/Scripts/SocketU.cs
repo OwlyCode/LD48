@@ -9,8 +9,6 @@ public class SocketU : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
-        Debug.Log("WinSock");
-        SceneManager.LoadScene("WinSlate", LoadSceneMode.Single);
-
+        SceneManager.LoadScene("Outro", LoadSceneMode.Single);
     }
 }
