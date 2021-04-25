@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
 public class GlobalState : MonoBehaviour
@@ -52,6 +53,14 @@ public class GlobalState : MonoBehaviour
         if (Anim >2) {Anim=0;}
         return AnimCon[Anim++];
     }
+    
+    RuntimeAnimatorController GetNextSockAnim(string Choose)
+    {
+        if (Choose.ToLower() == "rasta") { return SockRasta;}
+        else if (Choose.ToLower() == "einstein") { return SockEinst;}
+        else { return SockBas;}
+    }
+
 
     string GetNextLevel()
     {
@@ -313,11 +322,35 @@ public class GlobalState : MonoBehaviour
         LightManager.SetStartLight(true);
     }
 
-    public void ShowPanel() 
+    IEnumerator WriteRP(string AssetString, Text TextStage)
+    {
+        TextStage.text="";
+        foreach (char ch in AssetString) 
+        {
+            TextStage.text+= ch;
+            yield return new WaitForSeconds (Random.Range(0.01f, 0.2f));
+        }
+        //TextStage.text = AssetString;
+    }
+    public void ShowPanel(string AssetString) 
     {
         this.Panel.SetActive(true);
          this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
         Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim()  as RuntimeAnimatorController;
+        Text PanelText = Panel.transform.Find("Text").GetComponent<Text>();
+
+        StartCoroutine(WriteRP(AssetString, PanelText));
+    }
+
+    public void ShowPanel(string AssetString, string SockChooser) 
+    {
+        this.Panel.SetActive(true);
+         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
+        Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim(SockChooser)  as RuntimeAnimatorController;
+        
+        Text PanelText = Panel.transform.Find("PanelText").GetComponent<Text>();
+
+        StartCoroutine(WriteRP(AssetString, PanelText));
     }
 
     public void HidePanel()
@@ -333,7 +366,7 @@ public class GlobalState : MonoBehaviour
     {
         //InitPanel();
         HidePanel();
-        
+        ShowPanel("have a UI element gameObject that displays the players gold he has collected thus far, however when I load a new scene I noticed in the inspector that the public gameObject space had been empty, I tried solving this with a simple script. goldTexfdsfsdfdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsdsfsdfsdfsdfsfsdft");
         SourceLevel(level);
     }
 
