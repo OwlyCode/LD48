@@ -378,14 +378,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b79db4ec2d255d49aaca3492f12cce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wall: {fileID: 1640822238857029719, guid: f1cf966e8ecc29548a9375edf770cd80, type: 3}
-  Floor: {fileID: 1640822238857029719, guid: c384a496dc0df71479dbc14c35477be3, type: 3}
-  FloorAlt: {fileID: 5636377771450628659, guid: 22ed3d5e225fed0438a9518a94e6a0a1, type: 3}
+  Wall1: {fileID: 1640822238857029719, guid: f1cf966e8ecc29548a9375edf770cd80, type: 3}
+  Wall4: {fileID: 1640822238857029719, guid: bb8c2257803c84944a1bd3f6542ff4bf, type: 3}
+  WallB1: {fileID: 1640822238857029719, guid: 1bc2dd88ca49c594c9404dcb403e0340, type: 3}
+  WallB4: {fileID: 1640822238857029719, guid: 71a4963debc94b94aa4da122a1ed780e, type: 3}
+  WallD1: {fileID: 1640822238857029719, guid: 129d0c3fcdec07a4987a7e1ef21116ca, type: 3}
+  WallD4: {fileID: 1640822238857029719, guid: af951f17c91bce84faf8db9fa5f142c2, type: 3}
+  WallG1: {fileID: 1640822238857029719, guid: 94ae26aba5c41e7409f5bbb1fd0950a2, type: 3}
+  WallG4: {fileID: 1640822238857029719, guid: a7865842690005745aa11751dd282b6b, type: 3}
+  WallH1: {fileID: 1640822238857029719, guid: f06ace2c1edecbd43884b4bce368ecb4, type: 3}
+  WallH4: {fileID: 1640822238857029719, guid: 2b189ec77c064ba47b6f65020a21076c, type: 3}
+  Floor1: {fileID: 1640822238857029719, guid: c384a496dc0df71479dbc14c35477be3, type: 3}
+  Floor2: {fileID: 5636377771450628659, guid: 22ed3d5e225fed0438a9518a94e6a0a1, type: 3}
+  Floor4: {fileID: 5636377771450628659, guid: 41c41d48d3172ab4089921f628b9f716, type: 3}
   InDoor: {fileID: 1640822238857029719, guid: 27a8e50b8432e3748ab6df061bf602b1, type: 3}
   OutDoor: {fileID: 1640822238857029719, guid: 562dba70c1eca2542a04f05d08d4c0ad, type: 3}
-  Hole: {fileID: 1640822238857029719, guid: 7986315fd74d04b41aa4eac1a3f4d88d, type: 3}
+  Hole1: {fileID: 1640822238857029719, guid: 7986315fd74d04b41aa4eac1a3f4d88d, type: 3}
+  Hole4: {fileID: 1640822238857029719, guid: d24ca12eec20b10468171bf937816efc, type: 3}
   SockU: {fileID: 1640822238857029719, guid: f73c358f3236cb84fb6537dc1fe4e1cd, type: 3}
-  level: level0
+  level: level10
+  env: 1
 --- !u!4 &1191373811
 Transform:
   m_ObjectHideFlags: 0
