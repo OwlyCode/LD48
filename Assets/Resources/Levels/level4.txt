@@ -1,13 +1,16 @@
 env: 2
 ---
-XXXXXXXXXXXXXXXXXXXXXX..XX
-X...........X.......TXXX.X
-X......XXX..X....X...X...X
-X...X....T..X...XTX..X.TTX
-X...X....T.XX....X.....TTX
-X...X...ET.....X.........X
-X...X....T.XX.XTX....XXX.X
-X...X....T..X..X.....X...X
-X...X..XXX..X........X.STX
-X...........X..........TTX
-XXXXXXXXXXXXXXXXXXXXXXXXXX
+■──────────────■
+│STT...........║
+│..TTTTTTTTTTT.║
+│T.T.........T.║
+│..T..TTTTT..T.║
+│.T.T.T...T..T.║
+│.T.T.TET.T..T.║
+│...T.TTT.T..T.║
+│T..T.....T..T.║
+│T..TTTTTTT..T.║
+│T...........T.║
+│..TTTTTTTTTTT.║
+│..............║
+■══════════════■

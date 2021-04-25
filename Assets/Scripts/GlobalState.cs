@@ -33,10 +33,25 @@ public class GlobalState : MonoBehaviour
     public GameObject Hole4;
     public GameObject SockU;
     public GameObject TidePod;
+    public GameObject Battery;
+    public GameObject Panel;
     public string level;
     public int env;
+    public RuntimeAnimatorController SockBas;
+    public RuntimeAnimatorController SockRasta;
+    public RuntimeAnimatorController SockEinst;
+
+    bool disableBattery = false;
 
     private Vector3 startPosition;
+    private int Anim=0;
+
+    RuntimeAnimatorController GetNextSockAnim()
+    {
+        RuntimeAnimatorController[] AnimCon= {SockEinst,SockRasta,SockBas};    
+        if (Anim >2) {Anim=0;}
+        return AnimCon[Anim++];
+    }
 
     string GetNextLevel()
     {
@@ -55,6 +70,22 @@ public class GlobalState : MonoBehaviour
                 return "level6";
             case "level6":
                 return "level7";
+            case "level7":
+                return "level8";
+            case "level8":
+                return "level9";
+            case "level9":
+                return "level10";
+            case "level10":
+                return "level11";
+            case "level11":
+                return "level12";
+            case "level12":
+                return "level13";
+            case "level13":
+                return "level14";
+            case "level14":
+                return "level0";
         }
 
         return "level0";
@@ -71,6 +102,8 @@ public class GlobalState : MonoBehaviour
 
         level = GetNextLevel();
 
+        disableBattery = false;
+
         SourceLevel(level);
     }
     public void RestartLevel()
@@ -78,6 +111,11 @@ public class GlobalState : MonoBehaviour
         Destroy(GameObject.Find(level));
 
         SourceLevel(level);
+    }
+
+    public void DisableBattery()
+    {
+        disableBattery = true;
     }
 
     void SourceLevel(string FileName)
@@ -149,6 +187,17 @@ public class GlobalState : MonoBehaviour
                         GameObject floorBoulder2 = Instantiate(Floor2, position, Quaternion.identity);
                         floorBoulder2.name = "Floor2 ("+x+", "+y + ")";
                         floorBoulder2.transform.parent = root.transform;
+                        break;
+                    case 'B':
+                        if (!disableBattery) {
+                            GameObject b = Instantiate(Battery, position, Quaternion.identity);
+                            b.name = "Battery ("+x+", "+y + ")";
+                            b.transform.parent = root.transform;
+                        }
+
+                        GameObject floorBattery = Instantiate(Floor2, position, Quaternion.identity);
+                        floorBattery.name = "Floor2 ("+x+", "+y + ")";
+                        floorBattery.transform.parent = root.transform;
                         break;
                     case '#':
                         GameObject f4 = Instantiate(Floor4, position, Quaternion.identity);
@@ -250,9 +299,29 @@ public class GlobalState : MonoBehaviour
         LightManager.SetStartLight(true);
     }
 
+    public void ShowPanel() 
+    {
+        this.Panel.SetActive(true);
+         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
+        Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim()  as RuntimeAnimatorController;
+    }
+
+    public void HidePanel()
+    {
+        Debug.Log(Panel.transform.position.ToString());
+        this.Panel.transform.position = new Vector3(this.Panel.transform.position.x-6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
+        Debug.Log(Panel.transform.position.ToString());
+    }
+    void InitPanel()
+    {
+
+    }
     // Start is called before the first frame update
     void Start()
     {
+        //InitPanel();
+        HidePanel();
+        
         SourceLevel(level);
     }
 
