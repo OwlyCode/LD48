@@ -11,3 +11,7 @@ G = Socket de Fin
 │ = Mur Gauche
 ║ = Mur Droit
 ═ = Mur Bas
+┌ = Haut Gauche
+╖ = Haut Droit
+╘ = Bas Gauche
+╝ = Bas Droit
