@@ -17,3 +17,4 @@ C = Chaussette Character
 ╖ = Haut Droit
 ╘ = Bas Gauche
 ╝ = Bas Droit
+B = Batterie

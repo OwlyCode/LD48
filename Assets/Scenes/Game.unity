@@ -625,6 +625,7 @@ MonoBehaviour:
   Hole4: {fileID: 1640822238857029719, guid: d24ca12eec20b10468171bf937816efc, type: 3}
   SockU: {fileID: 1640822238857029719, guid: f73c358f3236cb84fb6537dc1fe4e1cd, type: 3}
   TidePod: {fileID: 1116048093830972996, guid: c43263a36a62ad24d928c5e4c4825429, type: 3}
+  Battery: {fileID: 1772168006584894568, guid: c52c896a725ec254e8877a439c1ce7eb, type: 3}
   level: level0
   env: 2
 --- !u!4 &1191373811
