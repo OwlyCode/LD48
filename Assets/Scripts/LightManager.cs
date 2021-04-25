@@ -32,6 +32,10 @@ public class LightManager : MonoBehaviour
 
     public static void SetStartLight(bool state)
     {
+        if (startLight == state) {
+            return;
+        }
+
         startLight = state;
 
         if (state) {
@@ -40,6 +44,12 @@ public class LightManager : MonoBehaviour
         }
 
         RefreshLight();
+    }
+
+
+    public static bool isPlayerLightOn()
+    {
+        return playerLight;
     }
 
     public static void playerLightSwitch()

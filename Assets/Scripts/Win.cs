@@ -13,6 +13,9 @@ public class Win : MonoBehaviour
         hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
         hero.GetComponent<Hero>().Lock();
 
+        if (LightManager.isPlayerLightOn()) {
+            LightManager.playerLightSwitch();
+        }
 
         manager.Delay(() => {
             manager.FadeOut(() => {

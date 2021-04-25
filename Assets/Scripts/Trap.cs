@@ -10,9 +10,14 @@ public class Trap : MonoBehaviour
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponent<Hero>().Die();
 
+        if (LightManager.isPlayerLightOn()) {
+            LightManager.playerLightSwitch();
+        }
+
         GetComponentInChildren<SpriteRenderer>().enabled = true;
 
         hero.GetComponentInChildren<Animator>().SetTrigger("Fall");
+
 
         manager.Delay(() => {
             manager.FadeOut(() => {

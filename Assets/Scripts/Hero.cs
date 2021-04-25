@@ -112,13 +112,17 @@ public class Hero : MonoBehaviour
 
     public void OnToggleLight()
     {
+        if (dead || locked) {
+            return;
+        }
+
         LightManager.playerLightSwitch();
         transform.Find("LightAudioSource").GetComponent<AudioSource>().Play();
     }
 
     private void Move(Vector3 offset)
     {
-        if (moving) {
+        if (moving || dead || locked) {
             return;
         }
 
