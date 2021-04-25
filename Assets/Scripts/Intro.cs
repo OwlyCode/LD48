@@ -7,9 +7,11 @@ using System;
 
 public class Intro : MonoBehaviour
 {
+    private bool hasSkipped = false;
+
     void Update()
     {
-    var VP = Camera.main.gameObject.GetComponent<VideoPlayer>();
+        var VP = Camera.main.gameObject.GetComponent<VideoPlayer>();
         long playerCurrentFrame = VP.GetComponent<VideoPlayer>().frame;
         long playerFrameCount = Convert.ToInt64(VP.GetComponent<VideoPlayer>().frameCount);
 
@@ -20,6 +22,14 @@ public class Intro : MonoBehaviour
 
     public void Skip()
     {
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        if (hasSkipped) {
+            return;
+        }
+
+        hasSkipped = true;
+        GameObject.Find("Transition").GetComponent<TransitionManager>().FadeOut(() => {
+            Debug.Log("LEL");
+            SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        });
     }
 }

@@ -9,6 +9,9 @@ public class SocketU : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
-        SceneManager.LoadScene("Outro", LoadSceneMode.Single);
+        var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
+        manager.FadeOut(() => {
+            SceneManager.LoadScene("Outro", LoadSceneMode.Single);
+        });
     }
 }
