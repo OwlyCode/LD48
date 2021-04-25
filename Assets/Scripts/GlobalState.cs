@@ -36,6 +36,8 @@ public class GlobalState : MonoBehaviour
     public GameObject TidePod;
     public GameObject Battery;
     public GameObject Panel;
+    public GameObject Einstein;
+
     public string level;
     public int env;
     public RuntimeAnimatorController SockBas;
@@ -49,11 +51,11 @@ public class GlobalState : MonoBehaviour
 
     RuntimeAnimatorController GetNextSockAnim()
     {
-        RuntimeAnimatorController[] AnimCon= {SockEinst,SockRasta,SockBas};    
+        RuntimeAnimatorController[] AnimCon= {SockEinst,SockRasta,SockBas};
         if (Anim >2) {Anim=0;}
         return AnimCon[Anim++];
     }
-    
+
     RuntimeAnimatorController GetNextSockAnim(string Choose)
     {
         if (Choose.ToLower() == "rasta") { return SockRasta;}
@@ -275,6 +277,16 @@ public class GlobalState : MonoBehaviour
                         su.name = "SocketU ("+x+", "+y + ")";
                         su.transform.parent = root.transform;
                         break;
+                    case '1':
+                        GameObject einstein = Instantiate(Einstein, position, Quaternion.identity);
+                        einstein.GetComponent<Sock>().state = this;
+                        einstein.name = "Einstein ("+x+", "+y + ")";
+                        einstein.transform.parent = root.transform;
+
+                        GameObject floorEinstein = Instantiate(Floor2, position, Quaternion.identity);
+                        floorEinstein.name = "Floor2 ("+x+", "+y + ")";
+                        floorEinstein.transform.parent = root.transform;
+                        break;
                     default:
                         break;
                 }
@@ -325,31 +337,44 @@ public class GlobalState : MonoBehaviour
     IEnumerator WriteRP(string AssetString, Text TextStage)
     {
         TextStage.text="";
-        foreach (char ch in AssetString) 
+        string display = "";
+        foreach (char ch in AssetString)
         {
-            TextStage.text+= ch;
-            yield return new WaitForSeconds (Random.Range(0.01f, 0.2f));
+            display += ch;
+            string filler = "";
+
+            foreach (char ch2 in AssetString.Substring(display.Length)) {
+                if (ch2 == ' ') {
+                    filler += " ";
+                } else {
+                    filler += "\u00a0";
+                }
+            }
+            TextStage.text = display + filler;
+
+            yield return new WaitForSeconds (Random.Range(0.01f, 0.2f) / 3f);
         }
-        //TextStage.text = AssetString;
     }
-    public void ShowPanel(string AssetString) 
+    public void ShowPanel(string AssetString)
     {
         this.Panel.SetActive(true);
          this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
         Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim()  as RuntimeAnimatorController;
         Text PanelText = Panel.transform.Find("Text").GetComponent<Text>();
 
+        StopAllCoroutines();
         StartCoroutine(WriteRP(AssetString, PanelText));
     }
 
-    public void ShowPanel(string AssetString, string SockChooser) 
+    public void ShowPanel(string AssetString, string SockChooser)
     {
         this.Panel.SetActive(true);
          this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
         Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim(SockChooser)  as RuntimeAnimatorController;
-        
-        Text PanelText = Panel.transform.Find("PanelText").GetComponent<Text>();
 
+        Text PanelText = Panel.transform.Find("Text").GetComponent<Text>();
+
+        StopAllCoroutines();
         StartCoroutine(WriteRP(AssetString, PanelText));
     }
 
@@ -357,20 +382,13 @@ public class GlobalState : MonoBehaviour
     {
         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x-6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
     }
-    void InitPanel()
-    {
 
-    }
-    // Start is called before the first frame update
     void Start()
     {
-        //InitPanel();
         HidePanel();
-        ShowPanel("have a UI element gameObject that displays the players gold he has collected thus far, however when I load a new scene I noticed in the inspector that the public gameObject space had been empty, I tried solving this with a simple script. goldTexfdsfsdfdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdsdsfsdfsdfsdfsfsdft");
         SourceLevel(level);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
