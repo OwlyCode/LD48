@@ -7,6 +7,7 @@ S = SORTIE
 T = TROU (avec l'env)
 U = TROU 2
 G = Socket de Fin
+C = Chaussette Character
 ■ = Colonne
 ─ = Mur Haut
 │ = Mur Gauche
