@@ -24,20 +24,25 @@ public class Hero : MonoBehaviour
     bool moveDown = false;
 
     bool dead = false;
+    bool locked = false;
 
     void Update()
     {
-        if (!dead && moveRight && !moving) {
+        if (!locked && !dead && moveRight && !moving) {
             Move(Vector3.right);
+            GetComponentInChildren<Animator>().SetTrigger("Right");
         }
-        if (!dead && moveLeft && !moving) {
+        if (!locked && !dead && moveLeft && !moving) {
             Move(Vector3.left);
+            GetComponentInChildren<Animator>().SetTrigger("Left");
         }
-        if (!dead && moveUp && !moving) {
+        if (!locked && !dead && moveUp && !moving) {
             Move(Vector3.up);
+            GetComponentInChildren<Animator>().SetTrigger("Up");
         }
-        if (!dead && moveDown && !moving) {
+        if (!locked && !dead && moveDown && !moving) {
             Move(Vector3.down);
+            GetComponentInChildren<Animator>().SetTrigger("Down");
         }
 
         if (moving) {
@@ -47,6 +52,11 @@ public class Hero : MonoBehaviour
 
             if (transform.position == target) {
                 moving = false;
+
+                if (!moveLeft && !moveRight && !moveDown && !moveUp) {
+                    GetComponentInChildren<Animator>().SetTrigger("Idle");
+                }
+
                 if (onMoveComplete != null) {
                     onMoveComplete();
                 }
@@ -58,10 +68,23 @@ public class Hero : MonoBehaviour
     public void Die()
     {
         dead = true;
+        GetComponentInChildren<Animator>().SetTrigger("Idle");
     }
+
     public void Respawn()
     {
         dead = false;
+    }
+
+    public void Lock()
+    {
+        locked = true;
+        GetComponentInChildren<Animator>().SetTrigger("Idle");
+    }
+
+    public void Unlock()
+    {
+        locked = false;
     }
 
     public void Freeze()
@@ -109,6 +132,7 @@ public class Hero : MonoBehaviour
             var mapElement = hit.collider.gameObject.GetComponent<MapElement>();
 
             if (mapElement == null || !mapElement.IsWalkable) {
+                GetComponentInChildren<Animator>().SetTrigger("Idle");
                 return;
             }
         }

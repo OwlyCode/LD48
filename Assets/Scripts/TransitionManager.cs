@@ -18,9 +18,15 @@ public class TransitionManager : MonoBehaviour
         StartCoroutine(AfterAnimation(callback));
     }
 
-    IEnumerator AfterAnimation(Action callback)
+    public void Delay(Action callback, float duration)
     {
-        yield return new WaitForSeconds(1.5f);
+        StopAllCoroutines();
+        StartCoroutine(AfterAnimation(callback));
+    }
+
+    IEnumerator AfterAnimation(Action callback, float duration = 1.5f)
+    {
+        yield return new WaitForSeconds(duration);
 
         callback();
     }
