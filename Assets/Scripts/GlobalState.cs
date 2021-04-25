@@ -6,14 +6,26 @@ using System.Text.RegularExpressions;
 
 public class GlobalState : MonoBehaviour
 {
-    public GameObject Wall;
-    public GameObject Floor;
-    public GameObject FloorAlt;
+    public GameObject Wall1;
+    public GameObject Wall4;
+    public GameObject WallB1;
+    public GameObject WallB4;
+    public GameObject WallD1;
+    public GameObject WallD4;
+    public GameObject WallG1;
+    public GameObject WallG4;
+    public GameObject WallH1;
+    public GameObject WallH4;
+    public GameObject Floor1;
+    public GameObject Floor2;
+    public GameObject Floor4;
     public GameObject InDoor;
     public GameObject OutDoor;
-    public GameObject Hole;
+    public GameObject Hole1;
+    public GameObject Hole4;
     public GameObject SockU;
     public string level;
+    public int env;
 
     private Vector3 startPosition;
 
@@ -62,7 +74,20 @@ public class GlobalState : MonoBehaviour
     void SourceLevel(string FileName)
     {
         string text = Resources.Load<TextAsset>("Levels/" + FileName).text;
-        string[] lines = Regex.Split(text, "\r\n");
+
+
+        string[] data = Regex.Split(text, "---");
+        string[] metas = Regex.Split(data[0], "\n");
+
+        foreach (string meta in metas) {
+            string[] parts = meta.Split(':');
+
+            if (parts[0].Trim() == "env") {
+                env = int.Parse(parts[1].Trim());
+            }
+        }
+
+        string[] lines = Regex.Split(data[1], "\n");
         int y = 0;
         int x = 0;
 
@@ -85,43 +110,69 @@ public class GlobalState : MonoBehaviour
                 switch (ch)
                 {
                     case '.':
-                        GameObject a = Instantiate(Floor, position, Quaternion.identity);
-                        a.name = "Floor ("+x+", "+y + ")";
-                        a.transform.parent = root.transform;
+                        GameObject f1 = Instantiate(Floor1, position, Quaternion.identity);
+                        f1.name = "Floor ("+x+", "+y + ")";
+                        f1.transform.parent = root.transform;
                         break;
                     case '~':
-                        GameObject aAlt = Instantiate(FloorAlt, position, Quaternion.identity);
-                        aAlt.name = "FloorAlt ("+x+", "+y + ")";
-                        aAlt.transform.parent = root.transform;
+                        GameObject f2 = Instantiate(Floor2, position, Quaternion.identity);
+                        f2.name = "Floor2 ("+x+", "+y + ")";
+                        f2.transform.parent = root.transform;
                         break;
+                    case '#':
+                        GameObject f4 = Instantiate(Floor4, position, Quaternion.identity);
+                        f4.name = "Floor4 ("+x+", "+y + ")";
+                        f4.transform.parent = root.transform;
+                        break;
+                    case '■':
                     case 'X':
-                        GameObject b = Instantiate(Wall, position, Quaternion.identity);
-                        b.name = "Wall ("+x+", "+y + ")";
-                        b.transform.parent = root.transform;
+                        GameObject w = Instantiate(((env==1)?Wall1:Wall4), position, Quaternion.identity);
+                        w.name = "Wall ("+x+", "+y + ")";
+                        w.transform.parent = root.transform;
+                        break;
+                    case '─':
+                        GameObject wh = Instantiate(((env==1)?WallH1:WallH4), position, Quaternion.identity);
+                        wh.name = "WallH ("+x+", "+y + ")";
+                        wh.transform.parent = root.transform;
+                        break;
+                    case '║':
+                        GameObject wd = Instantiate(((env==1)?WallD1:WallD4), position, Quaternion.identity);
+                        wd.name = "WallD ("+x+", "+y + ")";
+                        wd.transform.parent = root.transform;
+                        break;
+                    case '═':
+                        GameObject wb = Instantiate(((env==1)?WallB1:WallB4), position, Quaternion.identity);
+                        wb.name = "WallB ("+x+", "+y + ")";
+                        wb.transform.parent = root.transform;
+                        break;
+                    case '│':
+                        GameObject wg  = Instantiate(((env==1)?WallG1:WallG4), position, Quaternion.identity);
+                        wg.name = "WallG ("+x+", "+y + ")";
+                        wg.transform.parent = root.transform;
                         break;
                     case 'E':
-                        GameObject c = Instantiate(InDoor, position, Quaternion.identity);
-                        c.name = "InDoor ("+x+", "+y + ")";
-                        c.transform.parent = root.transform;
-                        startPosition = c.transform.position;
+                        GameObject i = Instantiate(InDoor, position, Quaternion.identity);
+                        i.name = "InDoor ("+x+", "+y + ")";
+                        i.transform.parent = root.transform;
+                        startPosition = i.transform.position;
                         break;
                     case 'S':
-                        GameObject d = Instantiate(OutDoor, position, Quaternion.identity);
-                        d.GetComponent<Win>().state = this;
-                        d.name = "OutDoor ("+x+", "+y + ")";
-                        d.transform.parent = root.transform;
+                        GameObject o = Instantiate(OutDoor, position, Quaternion.identity);
+                        o.GetComponent<Win>().state = this;
+                        o.name = "OutDoor ("+x+", "+y + ")";
+                        o.transform.parent = root.transform;
                         break;
                     case 'T':
-                        GameObject e = Instantiate(Hole, position, Quaternion.identity);
-                        e.GetComponent<Trap>().state = this;
-                        e.name = "Hole ("+x+", "+y + ")";
-                        e.transform.parent = root.transform;
+                        GameObject h =  Instantiate(((env==1)?Hole1:Hole4), position, Quaternion.identity);
+                        h.GetComponent<Trap>().state = this;
+                        h.name = "Hole ("+x+", "+y + ")";
+                        h.transform.parent = root.transform;
                         break;
                     case 'G':
-                        GameObject f = Instantiate(SockU, position, Quaternion.identity);
-                        f.GetComponent<SocketU>().state = this;
-                        f.name = "SocketU ("+x+", "+y + ")";
-                        f.transform.parent = root.transform;
+                        GameObject su = Instantiate(SockU, position, Quaternion.identity);
+                        su.GetComponent<SocketU>().state = this;
+                        su.name = "SocketU ("+x+", "+y + ")";
+                        su.transform.parent = root.transform;
                         break;
                     default:
                         Debug.Log("Default !");
