@@ -1,6 +1,7 @@
 X = WALL/Colonne
-. = SOL
-~ = SOL2
+. = SOL 1
+~ = SOL 2
+# = SOL 4
 E = ENTREE
 S = SORTIE
 T = TROU (avec l'env)
