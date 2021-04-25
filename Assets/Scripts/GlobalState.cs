@@ -34,12 +34,24 @@ public class GlobalState : MonoBehaviour
     public GameObject SockU;
     public GameObject TidePod;
     public GameObject Battery;
+    public GameObject Panel;
     public string level;
     public int env;
+    public RuntimeAnimatorController SockBas;
+    public RuntimeAnimatorController SockRasta;
+    public RuntimeAnimatorController SockEinst;
 
     bool disableBattery = false;
 
     private Vector3 startPosition;
+    private int Anim=0;
+
+    RuntimeAnimatorController GetNextSockAnim()
+    {
+        RuntimeAnimatorController[] AnimCon= {SockEinst,SockRasta,SockBas};    
+        if (Anim >2) {Anim=0;}
+        return AnimCon[Anim++];
+    }
 
     string GetNextLevel()
     {
@@ -287,9 +299,29 @@ public class GlobalState : MonoBehaviour
         LightManager.SetStartLight(true);
     }
 
+    public void ShowPanel() 
+    {
+        this.Panel.SetActive(true);
+         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x+6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
+        Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim()  as RuntimeAnimatorController;
+    }
+
+    public void HidePanel()
+    {
+        Debug.Log(Panel.transform.position.ToString());
+        this.Panel.transform.position = new Vector3(this.Panel.transform.position.x-6000,this.Panel.transform.position.y,this.Panel.transform.position.z);
+        Debug.Log(Panel.transform.position.ToString());
+    }
+    void InitPanel()
+    {
+
+    }
     // Start is called before the first frame update
     void Start()
     {
+        //InitPanel();
+        HidePanel();
+        
         SourceLevel(level);
     }
 
