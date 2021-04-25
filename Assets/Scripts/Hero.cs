@@ -78,7 +78,6 @@ public class Hero : MonoBehaviour
     public void Lock()
     {
         locked = true;
-        GetComponentInChildren<Animator>().SetTrigger("Idle");
     }
 
     public void Unlock()
