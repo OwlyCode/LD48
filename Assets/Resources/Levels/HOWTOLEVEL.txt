@@ -1,6 +1,13 @@
-X = WALL
+X = WALL/Colonne
 . = SOL
+~ = SOL2
 E = ENTREE
 S = SORTIE
-T = TROU
-~ = Socket de Fin
+T = TROU (avec l'env)
+U = TROU MARRON
+G = Socket de Fin
+■ = Colonne
+─ = Mur Haut
+│ = Mur Gauche
+║ = Mur Droit
+═ = Mur Bas
