@@ -48,7 +48,7 @@ public class TidePod : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.5f);
 
-        if (hit.collider == null) {
+        if (hit.collider == null || hit.collider.GetComponent<Trap>() != null) {
             transform.position += direction * Time.deltaTime * TIDEPOD_SPEED;
         } else {
             Instantiate(hitFx, transform.position + direction / 2, Quaternion.identity);
