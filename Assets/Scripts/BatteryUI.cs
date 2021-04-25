@@ -14,6 +14,8 @@ public class BatteryUI : MonoBehaviour
 
     bool emptied = false;
 
+    bool warned = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,13 @@ public class BatteryUI : MonoBehaviour
         var rate = LightManager.GetBatteryRate();
 
         Bar.fillAmount = rate;
+
+        if (rate < 0.33f && !warned) {
+            warned = true;
+
+            transform.Find("LowBatteryAudio").GetComponent<AudioSource>().Play();
+            GetComponent<Animator>().SetTrigger("LowBattery");
+        }
 
         if (rate <= 0f) {
             Background.color = emptyColor;

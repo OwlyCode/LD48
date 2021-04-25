@@ -7,21 +7,23 @@ public class Trap : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
-        Debug.Log("Trap");
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponent<Hero>().Die();
 
         GetComponentInChildren<SpriteRenderer>().enabled = true;
 
-        hero.GetComponent<Animator>().SetTrigger("Fall");
+        hero.GetComponentInChildren<Animator>().SetTrigger("Fall");
 
-        manager.FadeOut(() => {
-            state.RestartLevel();
-            hero.transform.position = state.GetStartPosition();
-            hero.GetComponent<Animator>().SetTrigger("Respawn");
-            manager.FadeIn(() => {
-                hero.GetComponent<Hero>().Respawn();
+        manager.Delay(() => {
+            manager.FadeOut(() => {
+                state.RestartLevel();
+                hero.transform.position = state.GetStartPosition();
+                hero.GetComponentInChildren<Animator>().SetTrigger("Idle");
+                manager.FadeIn(() => {
+                    hero.GetComponent<Hero>().Respawn();
+                });
             });
-        });
+        }, 2f);
+
     }
 }
