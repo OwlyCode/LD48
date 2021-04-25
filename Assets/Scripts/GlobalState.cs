@@ -58,6 +58,22 @@ public class GlobalState : MonoBehaviour
                 return "level6";
             case "level6":
                 return "level7";
+            case "level7":
+                return "level8";
+            case "level8":
+                return "level9";
+            case "level9":
+                return "level10";
+            case "level10":
+                return "level11";
+            case "level11":
+                return "level12";
+            case "level12":
+                return "level13";
+            case "level13":
+                return "level14";
+            case "level14":
+                return "level0";
         }
 
         return "level0";
