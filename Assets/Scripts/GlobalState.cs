@@ -349,7 +349,8 @@ public class GlobalState : MonoBehaviour
                         su.transform.parent = root.transform;
                         break;
                     case '1':
-                        if (!disableSocks) {
+                        if (!disableSocks)
+                        {
                             GameObject einstein = Instantiate(Einstein, position, Quaternion.identity);
                             einstein.GetComponent<Sock>().state = this;
                             einstein.name = "Einstein (" + x + ", " + y + ")";
@@ -361,7 +362,8 @@ public class GlobalState : MonoBehaviour
                         floorEinstein.transform.parent = root.transform;
                         break;
                     case '2':
-                        if (!disableSocks) {
+                        if (!disableSocks)
+                        {
                             GameObject rasta = Instantiate(Rasta, position, Quaternion.identity);
                             rasta.GetComponent<Sock>().state = this;
                             rasta.name = "Rasta (" + x + ", " + y + ")";
@@ -373,7 +375,8 @@ public class GlobalState : MonoBehaviour
                         floorRasta.transform.parent = root.transform;
                         break;
                     case '3':
-                        if (!disableSocks) {
+                        if (!disableSocks)
+                        {
                             GameObject bas = Instantiate(Bas, position, Quaternion.identity);
                             bas.GetComponent<Sock>().state = this;
                             bas.name = "Bas (" + x + ", " + y + ")";
@@ -525,10 +528,14 @@ public class GlobalState : MonoBehaviour
         Achievements.lightLess = true;
         Achievements.socks = 0;
         Achievements.startTime = Time.time;
+
     }
 
     void Update()
     {
-
+        if (Settings.enableAudio)
+            AudioListener.volume = 1;
+        else
+            AudioListener.volume = 0;
     }
 }
