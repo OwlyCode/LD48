@@ -13,6 +13,7 @@ public class Sock : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
+        hero.GetComponentInChildren<Animator>().SetTrigger("Idle");
         state.ShowPanel(Dialog, SockIdentifier);
         Destroy(gameObject);
     }
