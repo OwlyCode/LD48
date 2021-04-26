@@ -1,5 +1,5 @@
 env: 1
-name: Level 1
+name: Level 1 - Zigzag
 filler: 3|5|2|0
 filler: 2|10|4|180
 ---

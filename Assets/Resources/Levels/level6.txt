@@ -1,5 +1,5 @@
 env: 2
-name: Level 6
+name: Level 6 - Rooms
 filler: 2|7|13|180
 ---
 ┌──────────────────╖

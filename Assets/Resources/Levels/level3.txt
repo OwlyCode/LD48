@@ -1,5 +1,5 @@
 env: 2
-name: Level 3
+name: Level 3 - Stairs
 filler: 1|17|2|180
 filler: 2|5|10|180
 ---

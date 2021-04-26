@@ -1,5 +1,5 @@
 env: 2
-name: Level 8
+name: Level 8 - Mental map
 filler: 4|3|2|180
 ---
 ┌──────────────────╖
