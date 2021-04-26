@@ -9,6 +9,8 @@ public class SocketU : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
+        GetComponent<AudioSource>().Play();
+
         hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
         hero.GetComponent<Hero>().Lock();
 
