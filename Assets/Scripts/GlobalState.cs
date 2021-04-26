@@ -44,6 +44,9 @@ public class GlobalState : MonoBehaviour
     private bool speedDialog = false;
     private bool typing = false;
 
+
+    private Vector3 panelBasePosition;
+
     public string level;
     public int env;
     public RuntimeAnimatorController SockBas;
@@ -517,7 +520,7 @@ public class GlobalState : MonoBehaviour
     {
         GameObject.Find("Hero").GetComponent<Hero>().Lock();
         this.Panel.SetActive(true);
-        this.Panel.transform.position = new Vector3(this.Panel.transform.position.x + 6000, this.Panel.transform.position.y, this.Panel.transform.position.z);
+        this.Panel.transform.position = panelBasePosition + Vector3.right * 6000f;
         Panel.transform.Find("Anim").GetComponent<Animator>().runtimeAnimatorController = GetNextSockAnim(SockChooser) as RuntimeAnimatorController;
 
         Text PanelText = Panel.transform.Find("Text").GetComponent<Text>();
@@ -530,7 +533,7 @@ public class GlobalState : MonoBehaviour
     public void HidePanel()
     {
         GameObject.Find("Hero").GetComponent<Hero>().Unlock();
-        this.Panel.transform.position = new Vector3(this.Panel.transform.position.x - 6000, this.Panel.transform.position.y, this.Panel.transform.position.z);
+        this.Panel.transform.position = panelBasePosition;
     }
 
     public void SpeedDialog()
@@ -550,14 +553,14 @@ public class GlobalState : MonoBehaviour
 
     void Start()
     {
-        HidePanel();
         SourceLevel(level);
         LightManager.RefillMax();
         Achievements.deathLess = true;
         Achievements.lightLess = true;
         Achievements.socks = 0;
         Achievements.startTime = Time.time;
-
+        panelBasePosition = this.Panel.transform.position + Vector3.left * 6000f;
+        HidePanel();
     }
 
     void Update()
