@@ -17,9 +17,12 @@ public class TidePod : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        stopped = true;
-
         var hero = col.gameObject;
+        if (hero.GetComponent<Hero>().isInvulnerable()) {
+            return;
+        }
+
+        stopped = true;
 
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponent<Hero>().Die();

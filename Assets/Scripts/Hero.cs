@@ -87,6 +87,11 @@ public class Hero : MonoBehaviour
         locked = true;
     }
 
+    public bool isInvulnerable()
+    {
+        return locked || dead;
+    }
+
     public void Unlock()
     {
         locked = false;
