@@ -156,6 +156,14 @@ public class GlobalState : MonoBehaviour
 
         int maxLength = 0;
 
+        foreach (string meta in metas) {
+            string[] parts = meta.Split(':');
+
+            if (parts[0].Trim() == "env") {
+                env = int.Parse(parts[1].Trim());
+            }
+        }
+
         y = lines.Length;
         foreach (string line in lines)
         {
@@ -334,9 +342,29 @@ public class GlobalState : MonoBehaviour
             bounds.Encapsulate(r.bounds);
         }
 
-        Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3( bounds.size.x/2, bounds.size.y/2, 0)));
+        Camera.main.transform.position = (-Vector3.forward * 10) + new Vector3( bounds.size.x/2f, bounds.size.y/2f, 0);
 
-        Camera.main.orthographicSize = Mathf.Max(1f + bounds.size.x/4, 1f + bounds.size.y/2);
+        Camera.main.orthographicSize = Mathf.Max(bounds.size.x/2, bounds.size.y/2);
+
+        float bx = bounds.size.x * Screen.height / Screen.width * 0.5f;
+        float by = bounds.size.y * Screen.height / Screen.width;
+
+        if (bounds.size.x > bounds.size.y) {
+            Camera.main.orthographicSize = bx;
+        } else {
+            Camera.main.orthographicSize = by;
+        }
+
+        float screenRatio = (float)Screen.width / (float)Screen.height;
+        float targetRatio = bounds.size.x / bounds.size.y;
+
+        if(screenRatio >= targetRatio){
+            Camera.main.orthographicSize = bounds.size.y / 2;
+        }else{
+            float differenceInSize = targetRatio / screenRatio;
+            Camera.main.orthographicSize = bounds.size.y / 2 * differenceInSize;
+        }
+
 
         GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Clear();
         GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Stop();
@@ -347,10 +375,6 @@ public class GlobalState : MonoBehaviour
         // After camera resize to avoid fillers moving the camera
         foreach (string meta in metas) {
             string[] parts = meta.Split(':');
-
-            if (parts[0].Trim() == "env") {
-                env = int.Parse(parts[1].Trim());
-            }
 
             if (parts[0].Trim() == "filler") {
                 string[] fillerParts = parts[1].Split('|');
