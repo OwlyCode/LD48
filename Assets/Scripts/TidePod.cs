@@ -31,6 +31,7 @@ public class TidePod : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = true;
 
         hero.GetComponentInChildren<Animator>().SetTrigger("KO");
+        GetComponent<AudioSource>().Play();
 
         Achievements.deathLess = false;
 

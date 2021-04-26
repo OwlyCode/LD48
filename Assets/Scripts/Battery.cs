@@ -10,13 +10,14 @@ public class Battery : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
-        if(picked) {
+        if (picked) {
             return;
         }
 
         picked = true;
 
         GetComponent<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteMask>().enabled = false;
 
         LightManager.Refill();
 

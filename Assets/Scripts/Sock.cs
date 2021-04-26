@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Sock : MonoBehaviour
 {
+    bool active = true;
+
     public GlobalState state;
 
     [TextArea(15,20)]
@@ -15,12 +17,21 @@ public class Sock : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
+        if (!active) {
+            return;
+        }
+
+        active = false;
+
         GameObject.Find(SockUI).GetComponent<Image>().enabled = true;
+        GetComponent<AudioSource>().Play();
 
         Achievements.socks++;
 
         hero.GetComponentInChildren<Animator>().SetTrigger("Idle");
         state.ShowPanel(Dialog, SockIdentifier);
-        Destroy(gameObject);
+        GetComponent<Sock>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteMask>().enabled = false;
     }
 }
