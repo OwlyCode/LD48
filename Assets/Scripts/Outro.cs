@@ -10,7 +10,12 @@ public class Outro : MonoBehaviour
 
     void Update()
     {
-        if (cooldown > 0f) {
+        if (Settings.enableAudio)
+            AudioListener.volume = 1;
+        else
+            AudioListener.volume = 0;
+        if (cooldown > 0f)
+        {
             cooldown -= Time.deltaTime;
             return;
         }
@@ -18,4 +23,5 @@ public class Outro : MonoBehaviour
         var rt = GetComponent<RectTransform>();
         rt.localPosition = rt.localPosition + Vector3.up * Time.deltaTime * CREDITS_SPEED;
     }
+
 }
