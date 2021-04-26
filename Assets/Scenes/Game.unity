@@ -6594,7 +6594,7 @@ GameObject:
   - component: {fileID: 1736085773}
   - component: {fileID: 1736085772}
   m_Layer: 5
-  m_Name: Battery
+  m_Name: BatteryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

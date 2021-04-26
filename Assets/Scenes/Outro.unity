@@ -594,6 +594,7 @@ RectTransform:
   m_Children:
   - {fileID: 592641105}
   - {fileID: 909232526}
+  - {fileID: 1780059792}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -679,9 +680,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "<b>THANK YOU FOR PLAYING!\r</b>\n\r\n\n\n<b>Graphics\r</b>\nAxel Mourier\r\nFred\r\nLucas\r
-    \n\r\n<b>Audio\r</b>\nMax\n\r\n<b>Level Design</b>\nEwile Coyotte\r\n\r\n<b>Programming</b>\nVincent
-    Abel\r\nTristan\r Maindron\n\r\n\nNo sock was harmed in the making of this game."
+  m_Text: "<b>THANK YOU FOR PLAYING!\r</b>\n\r\n\n\n<b>Graphics\r</b>\nAxel Mourier\r\nFr\xE9d\xE9ric
+    Chemin\nLucas\r Gallo\n\r\n<b>Audio\r</b>\nMax\n\r\n<b>Level Design</b>\nEwile
+    Coyote\r\n\r\n<b>Programming</b>\nVincent Abel\r\nTristan\r Maindron\n\r\n<b>Special
+    thanks</b>\nGautier Br\xE9sard\nJacko\n\nNo sock was harmed in the making of
+    this game."
 --- !u!222 &592641107
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -721,6 +724,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946c17355a6b19543843da46ca79cfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &592641110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592641104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &909232525
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +972,7 @@ GameObject:
   - component: {fileID: 1780059794}
   - component: {fileID: 1780059793}
   - component: {fileID: 1780059795}
-  - component: {fileID: 1780059796}
+  - component: {fileID: 1780059797}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -974,7 +992,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 571831850}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -1035,7 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a077755c1ed505540bb7bcbc7e7df4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1780059796
+--- !u!114 &1780059797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1047,8 +1065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
 --- !u!1 &1789527701
 GameObject:
