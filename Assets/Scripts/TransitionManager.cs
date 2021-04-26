@@ -26,7 +26,7 @@ public class TransitionManager : MonoBehaviour
     public void Delay(Action callback, float duration)
     {
         StopAllCoroutines();
-        StartCoroutine(DoDelay(callback));
+        StartCoroutine(DoDelay(callback, duration));
     }
 
     IEnumerator DoDelay(Action callback, float duration = 1.5f)

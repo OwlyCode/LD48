@@ -13,8 +13,7 @@ public class Win : MonoBehaviour
         hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
         hero.GetComponent<Hero>().Lock();
 
-        GameObject.Find("BubblesLeft").GetComponent<ParticleSystem>().Play();
-        GameObject.Find("BubblesRight").GetComponent<ParticleSystem>().Play();
+        GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Play();
 
         if (LightManager.isPlayerLightOn()) {
             LightManager.playerLightSwitch();
@@ -28,6 +27,6 @@ public class Win : MonoBehaviour
                     hero.GetComponentInChildren<Animator>().SetTrigger("Idle");
                 });
             });
-        }, 2f);
+        }, 2.5f);
     }
 }

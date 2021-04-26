@@ -338,13 +338,11 @@ public class GlobalState : MonoBehaviour
 
         Camera.main.orthographicSize = Mathf.Max(1f + bounds.size.x/4, 1f + bounds.size.y/2);
 
-        GameObject.Find("BubblesRight").GetComponent<ParticleSystem>().Clear();
-        GameObject.Find("BubblesLeft").GetComponent<ParticleSystem>().Clear();
-        GameObject.Find("BubblesLeft").GetComponent<ParticleSystem>().Stop();
-        GameObject.Find("BubblesRight").GetComponent<ParticleSystem>().Stop();
+        GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Clear();
+        GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Stop();
 
-        GameObject.Find("BubblesRight").transform.position = Vector3.forward * 10 + Camera.main.transform.position + Vector3.right * (bounds.size.x+0f) / 2 + Vector3.down * (2 + bounds.size.y/2);
-        GameObject.Find("BubblesLeft").transform.position = Vector3.forward * 10 + Camera.main.transform.position - Vector3.right * (bounds.size.x+2f) / 2 + Vector3.down * (2 + bounds.size.y/2);
+        GameObject.Find("Bubbles").transform.position = Vector3.forward * 10 + Camera.main.transform.position + Vector3.down * (2 + bounds.size.y/2);
+
 
         // After camera resize to avoid fillers moving the camera
         foreach (string meta in metas) {
