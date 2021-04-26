@@ -39,6 +39,7 @@ public class GlobalState : MonoBehaviour
     public GameObject Einstein;
     public GameObject Rasta;
     public GameObject Bas;
+    public GameObject WaterDrop;
 
     public string level;
     public int env;
@@ -131,6 +132,14 @@ public class GlobalState : MonoBehaviour
         disableBattery = true;
     }
 
+    void MayAddDrop(GameObject root, Vector3 position)
+    {
+        if(Random.Range(0, 20) == 1) {
+            var drop = Instantiate(WaterDrop, position, Quaternion.identity);
+            drop.transform.parent = root.transform;
+        }
+    }
+
     void SourceLevel(string FileName)
     {
         var grid = GameObject.Find("Grid").GetComponent<Grid>();
@@ -165,11 +174,13 @@ public class GlobalState : MonoBehaviour
                         GameObject f1 = Instantiate(Floor1, position, Quaternion.identity);
                         f1.name = "Floor ("+x+", "+y + ")";
                         f1.transform.parent = root.transform;
+                        MayAddDrop(root, position);
                         break;
                     case '~':
                         GameObject f2 = Instantiate(Floor2, position, Quaternion.identity);
                         f2.name = "Floor2 ("+x+", "+y + ")";
                         f2.transform.parent = root.transform;
+                        MayAddDrop(root, position);
                         break;
                     case 'V':
                         GameObject tipepodV = Instantiate(TidePod, position, Quaternion.identity);
@@ -326,6 +337,14 @@ public class GlobalState : MonoBehaviour
         Camera.main.transform.position = (-Vector3.forward * 10) + grid.GetCellCenterLocal(grid.WorldToCell(new Vector3( bounds.size.x/2, bounds.size.y/2, 0)));
 
         Camera.main.orthographicSize = Mathf.Max(1f + bounds.size.x/4, 1f + bounds.size.y/2);
+
+        GameObject.Find("BubblesRight").GetComponent<ParticleSystem>().Clear();
+        GameObject.Find("BubblesLeft").GetComponent<ParticleSystem>().Clear();
+        GameObject.Find("BubblesLeft").GetComponent<ParticleSystem>().Stop();
+        GameObject.Find("BubblesRight").GetComponent<ParticleSystem>().Stop();
+
+        GameObject.Find("BubblesRight").transform.position = Vector3.forward * 10 + Camera.main.transform.position + Vector3.right * (bounds.size.x+0f) / 2 + Vector3.down * (2 + bounds.size.y/2);
+        GameObject.Find("BubblesLeft").transform.position = Vector3.forward * 10 + Camera.main.transform.position - Vector3.right * (bounds.size.x+2f) / 2 + Vector3.down * (2 + bounds.size.y/2);
 
         // After camera resize to avoid fillers moving the camera
         foreach (string meta in metas) {
