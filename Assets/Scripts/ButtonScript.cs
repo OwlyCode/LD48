@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
@@ -11,5 +12,13 @@ public class ButtonScript : MonoBehaviour
     public void QuitTheGame() 
     {
         Application.Quit();
+    }
+    public void ResetGame()
+    {
+         SceneManager.LoadScene("Game");
+    }
+    public void ResetMenu()
+    {
+         SceneManager.LoadScene("Menu");
     }
 }

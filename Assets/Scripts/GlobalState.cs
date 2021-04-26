@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 
 public class GlobalState : MonoBehaviour
@@ -122,6 +123,11 @@ public class GlobalState : MonoBehaviour
         SourceLevel(level);
     }
     public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void RestartGame()
     {
         Destroy(GameObject.Find(level));
 
