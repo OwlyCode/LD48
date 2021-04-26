@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ButtonScript : MonoBehaviour
     {
         GState.HidePanel();
     }
-    public void QuitTheGame() 
+    public void QuitTheGame()
     {
         Application.Quit();
     }
@@ -25,19 +26,42 @@ public class ButtonScript : MonoBehaviour
     }
     public void SoundVolume()
     {
-        if (Settings.enableAudio)
+        if (Settings.enableAudio) {
             Settings.enableAudio = false;
-        else 
+        }
+        else {
             Settings.enableAudio = true;
-    }
-/*    public void VideoVolume()
-    {
-        VideoPlayer test;
+        }
 
-        test = Camera.main.GetComponent<VideoPlayer>();
-        if (test.volume != 0)
-        test.volume = 1;
-        else 
-        test.volume = 0;
-    }*/
+        RefreshSound();
+    }
+
+    public void RefreshSound()
+    {
+        var text = GameObject.Find("SoundText");
+        string label = "";
+
+        if (!Settings.enableAudio) {
+            label = "Sound: off";
+        }
+        else {
+            label = "Sound: on";
+        }
+
+        if (text == null) {
+            return;
+        }
+
+        if (text.GetComponent<Text>() != null) {
+            text.GetComponent<Text>().text = label;
+        }
+        if (text.GetComponent<TextMesh>() != null) {
+            text.GetComponent<Text>().text = label;
+        }
+    }
+
+    void Start()
+    {
+        RefreshSound();
+    }
 }
