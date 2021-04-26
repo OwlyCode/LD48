@@ -9,9 +9,19 @@ public class SocketU : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
+        hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
+        hero.GetComponent<Hero>().Lock();
+
+        GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Play();
+
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
-        manager.FadeOut(() => {
-            SceneManager.LoadScene("Outro", LoadSceneMode.Single);
-        });
+        manager.Delay(() => {
+            manager.FadeOut(() => {
+                SceneManager.LoadScene("Outro", LoadSceneMode.Single);
+            });
+        }, 2.5f);
+
+
+        Achievements.endTime = Time.time;
     }
 }

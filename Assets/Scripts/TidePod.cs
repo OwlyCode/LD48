@@ -32,6 +32,8 @@ public class TidePod : MonoBehaviour
 
         hero.GetComponentInChildren<Animator>().SetTrigger("KO");
 
+        Achievements.deathLess = false;
+
         manager.Delay(() => {
             manager.FadeOut(() => {
                 state.RestartLevel();

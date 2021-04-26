@@ -452,6 +452,9 @@ public class GlobalState : MonoBehaviour
     {
         HidePanel();
         SourceLevel(level);
+        Achievements.deathLess = true;
+        Achievements.socks = 0;
+        Achievements.startTime = Time.time;
     }
 
     void Update()

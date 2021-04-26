@@ -215,6 +215,7 @@ MonoBehaviour:
   Dialog: Beware, it is quite dark deep in the washing machine. When the light goes
     off, traps are invisible. Use your memory!
   SockIdentifier: einstein
+  SockUI: EinsteinUI
 --- !u!114 &1731116226133475955
 MonoBehaviour:
   m_ObjectHideFlags: 0
