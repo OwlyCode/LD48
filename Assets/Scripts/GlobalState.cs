@@ -101,6 +101,8 @@ public class GlobalState : MonoBehaviour
             case "level13":
                 return "level14";
             case "level14":
+                return "level15";
+            case "level15":
                 return "level0";
         }
 
@@ -125,6 +127,7 @@ public class GlobalState : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LightManager.RefillMax();
     }
 
     public void RestartLevel()
