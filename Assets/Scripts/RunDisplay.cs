@@ -12,6 +12,10 @@ public class RunDisplay : MonoBehaviour
     void Start()
     {
         GetComponent<Text>().text = Achievements.getRunInfos();
+
+        if (Achievements.isGodlike()) {
+            GameObject.Find("Godlike").GetComponent<Image>().enabled = true;
+        }
     }
 
     void Update()

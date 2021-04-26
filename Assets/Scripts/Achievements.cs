@@ -17,6 +17,11 @@ public class Achievements
         return endTime - startTime;
     }
 
+    public static bool isGodlike()
+    {
+        return deathLess && lightLess && socks == 3;
+    }
+
     public static string getRunInfos()
     {
         string text = "Run completed! \n";
