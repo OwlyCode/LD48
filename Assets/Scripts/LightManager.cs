@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class LightManager : MonoBehaviour
 {
     const float MAX_BATTERY = 6f;
-    const float START_LIGHT_DURATION = 5f;
+    const float START_LIGHT_DURATION = 0f;
 
     const float BATTERY_REFILL_AMOUNT = 3f;
+
+    const float BATTERY_MIN = 1f;
 
     private static bool playerLight = false;
     private static bool startLight = false;
@@ -21,6 +23,13 @@ public class LightManager : MonoBehaviour
         instance = this;
     }
 
+    public static void HandleMinimum()
+    {
+        if (batteryLife < BATTERY_MIN) {
+            batteryLife = BATTERY_MIN;
+        }
+    }
+
     public static void Refill()
     {
         batteryLife += BATTERY_REFILL_AMOUNT;
@@ -28,6 +37,8 @@ public class LightManager : MonoBehaviour
         if (batteryLife > MAX_BATTERY) {
             batteryLife = MAX_BATTERY;
         }
+
+        GameObject.Find("BatteryUI").GetComponent<BatteryUI>().ResetWarning();
     }
 
     public static void SetStartLight(bool state)

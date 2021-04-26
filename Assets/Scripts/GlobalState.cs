@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 
 public class GlobalState : MonoBehaviour
@@ -121,6 +122,11 @@ public class GlobalState : MonoBehaviour
 
         SourceLevel(level);
     }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void RestartLevel()
     {
         Destroy(GameObject.Find(level));
@@ -494,6 +500,9 @@ public class GlobalState : MonoBehaviour
     {
         HidePanel();
         SourceLevel(level);
+        Achievements.deathLess = true;
+        Achievements.socks = 0;
+        Achievements.startTime = Time.time;
     }
 
     void Update()
