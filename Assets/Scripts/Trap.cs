@@ -18,6 +18,7 @@ public class Trap : MonoBehaviour
 
         hero.GetComponentInChildren<Animator>().SetTrigger("Fall");
 
+        Achievements.deathLess = false;
 
         manager.Delay(() => {
             manager.FadeOut(() => {

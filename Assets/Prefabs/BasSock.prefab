@@ -12,6 +12,10 @@ PrefabInstance:
       value: What? Is there something on my face?
       objectReference: {fileID: 0}
     - target: {fileID: 3279061968334517641, guid: bb1451b88cc9500498a9746c08893be1, type: 3}
+      propertyPath: SockUI
+      value: BasUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279061968334517641, guid: bb1451b88cc9500498a9746c08893be1, type: 3}
       propertyPath: SockIdentifier
       value: bas
       objectReference: {fileID: 0}
