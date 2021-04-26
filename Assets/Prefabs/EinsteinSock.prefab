@@ -212,7 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
-  Dialog: "Hi there! E=mc\xB2"
+  Dialog: Beware, it is quite dark deep in the washing machine. When the light goes
+    off, traps are invisible. Use your memory!
   SockIdentifier: einstein
 --- !u!114 &1731116226133475955
 MonoBehaviour:
