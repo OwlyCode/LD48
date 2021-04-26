@@ -20,6 +20,8 @@ public class Trap : MonoBehaviour
 
         Achievements.deathLess = false;
 
+        GetComponent<AudioSource>().Play();
+
         manager.Delay(() => {
             manager.FadeOut(() => {
                 state.RestartLevel();

@@ -17,6 +17,7 @@ public class Battery : MonoBehaviour
         picked = true;
 
         GetComponent<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteMask>().enabled = false;
 
         LightManager.Refill();
 
