@@ -61,7 +61,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6305779258510155932, guid: 9fd6d6f6a9aacb144a87c38a1e72d455, type: 3}
       propertyPath: Dialog
-      value: Yeah man! We are all socks. Peace bro.
+      value: Yeah man! What are you doing down here? Looking for fellow socks? Beware,
+        the deeps are ridden with lost tidepods!
       objectReference: {fileID: 0}
     - target: {fileID: 6305779258510155932, guid: 9fd6d6f6a9aacb144a87c38a1e72d455, type: 3}
       propertyPath: SockUI

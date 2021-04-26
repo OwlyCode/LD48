@@ -40,6 +40,12 @@ public class LightManager : MonoBehaviour
 
         GameObject.Find("BatteryUI").GetComponent<BatteryUI>().ResetWarning();
     }
+    public static void RefillMax()
+    {
+        batteryLife = MAX_BATTERY;
+
+        GameObject.Find("BatteryUI").GetComponent<BatteryUI>().ResetWarning();
+    }
 
     public static void SetStartLight(bool state)
     {

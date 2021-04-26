@@ -50,6 +50,8 @@ public class GlobalState : MonoBehaviour
 
     bool disableBattery = false;
 
+    bool disableSocks = false;
+
     private Vector3 startPosition;
     private int Anim = 0;
 
@@ -101,6 +103,8 @@ public class GlobalState : MonoBehaviour
             case "level13":
                 return "level14";
             case "level14":
+                return "level15";
+            case "level15":
                 return "level0";
         }
 
@@ -119,12 +123,14 @@ public class GlobalState : MonoBehaviour
         level = GetNextLevel();
 
         disableBattery = false;
+        disableSocks = false;
 
         SourceLevel(level);
     }
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LightManager.RefillMax();
     }
 
     public void RestartLevel()
@@ -137,6 +143,11 @@ public class GlobalState : MonoBehaviour
     public void DisableBattery()
     {
         disableBattery = true;
+    }
+
+    public void DisableSocks()
+    {
+        disableSocks = true;
     }
 
     void MayAddDrop(GameObject root, Vector3 position)
@@ -334,30 +345,36 @@ public class GlobalState : MonoBehaviour
                         su.transform.parent = root.transform;
                         break;
                     case '1':
-                        GameObject einstein = Instantiate(Einstein, position, Quaternion.identity);
-                        einstein.GetComponent<Sock>().state = this;
-                        einstein.name = "Einstein (" + x + ", " + y + ")";
-                        einstein.transform.parent = root.transform;
+                        if (!disableSocks) {
+                            GameObject einstein = Instantiate(Einstein, position, Quaternion.identity);
+                            einstein.GetComponent<Sock>().state = this;
+                            einstein.name = "Einstein (" + x + ", " + y + ")";
+                            einstein.transform.parent = root.transform;
+                        }
 
                         GameObject floorEinstein = Instantiate(((env == 1) ? Floor1 : Floor4), position, Quaternion.identity);
                         floorEinstein.name = "Floor (" + x + ", " + y + ")";
                         floorEinstein.transform.parent = root.transform;
                         break;
                     case '2':
-                        GameObject rasta = Instantiate(Rasta, position, Quaternion.identity);
-                        rasta.GetComponent<Sock>().state = this;
-                        rasta.name = "Rasta (" + x + ", " + y + ")";
-                        rasta.transform.parent = root.transform;
+                        if (!disableSocks) {
+                            GameObject rasta = Instantiate(Rasta, position, Quaternion.identity);
+                            rasta.GetComponent<Sock>().state = this;
+                            rasta.name = "Rasta (" + x + ", " + y + ")";
+                            rasta.transform.parent = root.transform;
+                        }
 
                         GameObject floorRasta = Instantiate(((env == 1) ? Floor1 : Floor4), position, Quaternion.identity);
                         floorRasta.name = "Floor (" + x + ", " + y + ")";
                         floorRasta.transform.parent = root.transform;
                         break;
                     case '3':
-                        GameObject bas = Instantiate(Bas, position, Quaternion.identity);
-                        bas.GetComponent<Sock>().state = this;
-                        bas.name = "Bas (" + x + ", " + y + ")";
-                        bas.transform.parent = root.transform;
+                        if (!disableSocks) {
+                            GameObject bas = Instantiate(Bas, position, Quaternion.identity);
+                            bas.GetComponent<Sock>().state = this;
+                            bas.name = "Bas (" + x + ", " + y + ")";
+                            bas.transform.parent = root.transform;
+                        }
 
                         GameObject floorBas = Instantiate(((env == 1) ? Floor1 : Floor4), position, Quaternion.identity);
                         floorBas.name = "Floor (" + x + ", " + y + ")";
@@ -501,6 +518,7 @@ public class GlobalState : MonoBehaviour
         HidePanel();
         SourceLevel(level);
         Achievements.deathLess = true;
+        Achievements.lightLess = true;
         Achievements.socks = 0;
         Achievements.startTime = Time.time;
     }

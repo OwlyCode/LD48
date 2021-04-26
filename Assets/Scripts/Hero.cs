@@ -87,6 +87,11 @@ public class Hero : MonoBehaviour
         locked = true;
     }
 
+    public bool isInvulnerable()
+    {
+        return locked || dead;
+    }
+
     public void Unlock()
     {
         locked = false;
@@ -122,6 +127,8 @@ public class Hero : MonoBehaviour
         if (dead || locked) {
             return;
         }
+
+        Achievements.lightLess = false;
 
         LightManager.playerLightSwitch();
         transform.Find("LightAudioSource").GetComponent<AudioSource>().Play();

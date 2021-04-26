@@ -17,9 +17,12 @@ public class TidePod : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        stopped = true;
-
         var hero = col.gameObject;
+        if (hero.GetComponent<Hero>().isInvulnerable()) {
+            return;
+        }
+
+        stopped = true;
 
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponent<Hero>().Die();
@@ -53,9 +56,16 @@ public class TidePod : MonoBehaviour
             return;
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.5f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction, 0.5f);
 
-        if (hit.collider == null || hit.collider.GetComponent<Trap>() != null) {
+        bool rebound = false;
+
+        foreach (var hit in hits) {
+            bool shouldCross = hit.collider.GetComponent<MapElement>() == null || hit.collider.GetComponent<MapElement>().IsWalkable == true;
+            rebound |= !shouldCross;
+        }
+
+        if (!rebound) {
             transform.position += direction * Time.deltaTime * TIDEPOD_SPEED;
         } else {
             Instantiate(hitFx, transform.position + direction / 2, Quaternion.identity);

@@ -15,10 +15,11 @@ public class ButtonScript : MonoBehaviour
     }
     public void ResetGame()
     {
-         SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game");
+        LightManager.RefillMax();
     }
     public void ResetMenu()
     {
-         SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
     }
 }
