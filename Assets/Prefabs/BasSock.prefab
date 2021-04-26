@@ -9,7 +9,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3279061968334517641, guid: bb1451b88cc9500498a9746c08893be1, type: 3}
       propertyPath: Dialog
-      value: I don't even know what i'm doing here since so long!
+      value: I don't even know what i've been doing here for so long! The next level
+        is the last one. Are you prepared?
       objectReference: {fileID: 0}
     - target: {fileID: 3279061968334517641, guid: bb1451b88cc9500498a9746c08893be1, type: 3}
       propertyPath: SockUI
