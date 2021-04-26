@@ -34,6 +34,10 @@ public class Sock : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponentInChildren<SpriteMask>().enabled = false;
 
+        if (LightManager.isPlayerLightOn()) {
+            LightManager.playerLightSwitch();
+        }
+
         GameObject.Find("GlobalState").GetComponent<GlobalState>().DisableSocks();
     }
 }
