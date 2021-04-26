@@ -122,12 +122,12 @@ public class GlobalState : MonoBehaviour
 
         SourceLevel(level);
     }
-    public void RestartLevel()
+    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void RestartGame()
+    public void RestartLevel()
     {
         Destroy(GameObject.Find(level));
 

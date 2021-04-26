@@ -72,6 +72,7 @@ public class Hero : MonoBehaviour
 
     public void Respawn()
     {
+        LightManager.HandleMinimum();
         dead = false;
     }
 

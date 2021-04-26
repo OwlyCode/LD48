@@ -22,7 +22,11 @@ public class BatteryUI : MonoBehaviour
         backgroundColor = Background.color;
     }
 
-    // Update is called once per frame
+    public void ResetWarning()
+    {
+        warned = false;
+    }
+
     void Update()
     {
         var rate = LightManager.GetBatteryRate();

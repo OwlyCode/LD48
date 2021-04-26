@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
-  Dialog: Beware, it is quite dark deep in the washing machine. When the light goes
-    off, traps are invisible. Use your memory!
+  Dialog: Beware adventurer, it is dark deep in the washing machine. Traps are hidden.
+    Use <space> to toggle your flashlight!
   SockIdentifier: einstein
   SockUI: EinsteinUI
 --- !u!114 &1731116226133475955
