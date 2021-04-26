@@ -183,6 +183,10 @@ public class GlobalState : MonoBehaviour
             {
                 env = int.Parse(parts[1].Trim());
             }
+            if (parts[0].Trim() == "name")
+            {
+                GameObject.Find("LevelDisplay").GetComponent<Text>().text = parts[1].Trim();
+            }
         }
 
         y = lines.Length;
