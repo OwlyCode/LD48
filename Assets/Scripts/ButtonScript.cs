@@ -12,4 +12,8 @@ public class ButtonScript : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Reset(GlobalState GState)
+    {
+        GState.RestartLevel();
+    }
 }
