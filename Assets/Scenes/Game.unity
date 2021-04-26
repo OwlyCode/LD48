@@ -5593,7 +5593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f680887c639d894c996d2fe4dc18192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!1 &679482923
 GameObject:
   m_ObjectHideFlags: 0
@@ -6343,7 +6342,7 @@ MonoBehaviour:
   Rasta: {fileID: 3533952317287047905, guid: bb1451b88cc9500498a9746c08893be1, type: 3}
   Bas: {fileID: 6504307050205293551, guid: e37d866cf6f9eb84087bac613f1b1bef, type: 3}
   WaterDrop: {fileID: 5932837162596206560, guid: 6b3d7012026b30c4085f310ce5a580c8, type: 3}
-  level: level0
+  level: dev
   env: 2
   SockBas: {fileID: 9100000, guid: b04cd23eae9817f45b5c2ba69126ff3b, type: 2}
   SockRasta: {fileID: 9100000, guid: 9edc18ce27a07fb448fab21ecc3570ad, type: 2}
@@ -6767,7 +6766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f680887c639d894c996d2fe4dc18192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 2071917688}
 --- !u!114 &1541918117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7365,7 +7363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f680887c639d894c996d2fe4dc18192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!114 &1872123914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7711,7 +7708,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Close Panel
+  m_Text: Skip (space)
 --- !u!222 &2036345593
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -125,7 +125,14 @@ public class Hero : MonoBehaviour
     public void OnToggleLight()
     {
         if (dead || locked) {
-            return;
+            var state = GameObject.Find("GlobalState").GetComponent<GlobalState>();
+
+            if (state.IsDialogSpeeded() || !state.IsTyping()) {
+                state.HidePanel();
+            } else {
+                state.SpeedDialog();
+            }
+            return; // isDialogSpeeded
         }
 
         Achievements.lightLess = false;

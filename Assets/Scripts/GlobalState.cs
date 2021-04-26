@@ -41,6 +41,8 @@ public class GlobalState : MonoBehaviour
     public GameObject Rasta;
     public GameObject Bas;
     public GameObject WaterDrop;
+    private bool speedDialog = false;
+    private bool typing = false;
 
     public string level;
     public int env;
@@ -487,8 +489,17 @@ public class GlobalState : MonoBehaviour
             }
             TextStage.text = display + filler;
 
+            if (speedDialog) {
+                speedDialog = false;
+                typing = false;
+                TextStage.text = AssetString;
+                yield break;
+            }
+
             yield return new WaitForSeconds(Random.Range(0.01f, 0.2f) / 3f);
         }
+
+        typing = false;
     }
     public void ShowPanel(string AssetString)
     {
@@ -499,6 +510,7 @@ public class GlobalState : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(WriteRP(AssetString, PanelText));
+        typing = true;
     }
 
     public void ShowPanel(string AssetString, string SockChooser)
@@ -512,12 +524,28 @@ public class GlobalState : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(WriteRP(AssetString, PanelText));
+        typing = true;
     }
 
     public void HidePanel()
     {
         GameObject.Find("Hero").GetComponent<Hero>().Unlock();
         this.Panel.transform.position = new Vector3(this.Panel.transform.position.x - 6000, this.Panel.transform.position.y, this.Panel.transform.position.z);
+    }
+
+    public void SpeedDialog()
+    {
+        speedDialog = true;
+    }
+
+    public bool IsDialogSpeeded()
+    {
+        return speedDialog;
+    }
+
+    public bool IsTyping()
+    {
+        return typing;
     }
 
     void Start()
