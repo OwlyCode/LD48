@@ -19,6 +19,8 @@ public class Win : MonoBehaviour
             LightManager.playerLightSwitch();
         }
 
+        GetComponent<AudioSource>().Play();
+
         manager.Delay(() => {
             manager.FadeOut(() => {
                 state.NextLevel();
