@@ -128,21 +128,25 @@ public class Hero : MonoBehaviour
         }
 
         LightManager.SetStartLight(false);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, offset, 1.0f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, offset, 1.0f);
 
-        if (hit.collider != null) {
+        foreach (var hit in hits) {
+            if (hit.collider != null) {
 
-            var mapElement = hit.collider.gameObject.GetComponent<MapElement>();
+                var mapElement = hit.collider.gameObject.GetComponent<MapElement>();
 
-            if (mapElement == null || !mapElement.IsWalkable) {
-                GetComponentInChildren<Animator>().SetTrigger("Idle");
-                return;
+                if (mapElement == null || !mapElement.IsWalkable) {
+                    GetComponentInChildren<Animator>().SetTrigger("Idle");
+                    return;
+                }
             }
         }
 
         onMoveComplete = () => {
-            if (hit.collider != null) {
-                hit.collider.gameObject.SendMessage("heroWalkIn", gameObject, SendMessageOptions.DontRequireReceiver);
+            foreach (var hit in hits) {
+                if (hit.collider != null) {
+                    hit.collider.gameObject.SendMessage("heroWalkIn", gameObject, SendMessageOptions.DontRequireReceiver);
+                }
             }
         };
 
