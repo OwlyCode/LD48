@@ -552,6 +552,7 @@ public class GlobalState : MonoBehaviour
     {
         HidePanel();
         SourceLevel(level);
+        LightManager.RefillMax();
         Achievements.deathLess = true;
         Achievements.lightLess = true;
         Achievements.socks = 0;
