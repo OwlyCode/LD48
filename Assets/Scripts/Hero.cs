@@ -45,7 +45,11 @@ public class Hero : MonoBehaviour
             GetComponentInChildren<Animator>().SetTrigger("Down");
         }
 
+        var audio = GetComponent<AudioSource>();
         if (moving) {
+            if (!audio.isPlaying) {
+                audio.Play();
+            }
             movementAmount += Time.deltaTime * MOVEMENT_RATIO;
 
             transform.position = Vector3.Lerp(origin, target, movementAmount);
@@ -62,6 +66,8 @@ public class Hero : MonoBehaviour
                 }
                 onMoveComplete = null;
             }
+        } else {
+            audio.Pause();
         }
     }
 
