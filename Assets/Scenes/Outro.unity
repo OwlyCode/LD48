@@ -681,7 +681,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "<b>THANK YOU FOR PLAYING!\r</b>\n\r\n\n\n<b>Graphics\r</b>\nAxel Mourier\r\nFr\xE9d\xE9ric
-    Chemin\nLucas\r Gallo\n\r\n<b>Audio\r</b>\nMax\n\r\n<b>Level Design</b>\nEwile
+    Chemin\nLucas\r Gallo\n\r\n<b>Audio\r</b>\nMakse\n\r\n<b>Level Design</b>\nEwile
     Coyote\r\n\r\n<b>Programming</b>\nVincent Abel\r\nTristan\r Maindron\n\r\n<b>Special
     thanks</b>\nGautier Br\xE9sard\nJacko\n\nNo sock was harmed in the making of
     this game."
@@ -1214,7 +1214,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 18e8f5973a1759342be5f073654313d9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6d7111a8c2f80d44299c94552371ebb2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
