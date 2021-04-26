@@ -33,5 +33,7 @@ public class Sock : MonoBehaviour
         GetComponent<Sock>().enabled = false;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponentInChildren<SpriteMask>().enabled = false;
+
+        GameObject.Find("GlobalState").GetComponent<GlobalState>().DisableSocks();
     }
 }

@@ -128,6 +128,8 @@ public class Hero : MonoBehaviour
             return;
         }
 
+        Achievements.lightLess = false;
+
         LightManager.playerLightSwitch();
         transform.Find("LightAudioSource").GetComponent<AudioSource>().Play();
     }
