@@ -15,17 +15,6 @@ public class Intro : MonoBehaviour
         else
             AudioListener.volume = 0;
     }
-    void Update()
-    {
-        var VP = Camera.main.gameObject.GetComponent<VideoPlayer>();
-        long playerCurrentFrame = VP.GetComponent<VideoPlayer>().frame;
-        long playerFrameCount = Convert.ToInt64(VP.GetComponent<VideoPlayer>().frameCount);
-
-        if (playerCurrentFrame >= playerFrameCount - 2)
-        {
-            Skip();
-        }
-    }
 
     public void Skip()
     {
