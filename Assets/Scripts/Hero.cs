@@ -25,22 +25,23 @@ public class Hero : MonoBehaviour
 
     bool dead = false;
     bool locked = false;
+    bool win = false;
 
     void Update()
     {
-        if (!locked && !dead && moveRight && !moving) {
+        if (!win && !locked && !dead && moveRight && !moving) {
             Move(Vector3.right);
             GetComponentInChildren<Animator>().SetTrigger("Right");
         }
-        if (!locked && !dead && moveLeft && !moving) {
+        if (!win && !locked && !dead && moveLeft && !moving) {
             Move(Vector3.left);
             GetComponentInChildren<Animator>().SetTrigger("Left");
         }
-        if (!locked && !dead && moveUp && !moving) {
+        if (!win && !locked && !dead && moveUp && !moving) {
             Move(Vector3.up);
             GetComponentInChildren<Animator>().SetTrigger("Up");
         }
-        if (!locked && !dead && moveDown && !moving) {
+        if (!win && !locked && !dead && moveDown && !moving) {
             Move(Vector3.down);
             GetComponentInChildren<Animator>().SetTrigger("Down");
         }
@@ -86,6 +87,14 @@ public class Hero : MonoBehaviour
     {
         locked = true;
     }
+    public void Win()
+    {
+        win = true;
+    }
+    public void ResetWin()
+    {
+        win = false;
+    }
 
     public bool isInvulnerable()
     {
@@ -124,6 +133,10 @@ public class Hero : MonoBehaviour
 
     public void OnToggleLight()
     {
+        if (win) {
+            return;
+        }
+
         if (dead || locked) {
             var state = GameObject.Find("GlobalState").GetComponent<GlobalState>();
 
@@ -143,7 +156,7 @@ public class Hero : MonoBehaviour
 
     private void Move(Vector3 offset)
     {
-        if (moving || dead || locked) {
+        if (moving || dead || locked || win) {
             return;
         }
 

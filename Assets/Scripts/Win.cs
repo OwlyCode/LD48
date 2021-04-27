@@ -11,7 +11,7 @@ public class Win : MonoBehaviour
     {
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
-        hero.GetComponent<Hero>().Lock();
+        hero.GetComponent<Hero>().Win();
 
         GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Play();
 
@@ -25,7 +25,7 @@ public class Win : MonoBehaviour
             manager.FadeOut(() => {
                 state.NextLevel();
                 manager.FadeIn(() => {
-                    hero.GetComponent<Hero>().Unlock();
+                    hero.GetComponent<Hero>().ResetWin();
                     hero.GetComponentInChildren<Animator>().SetTrigger("Idle");
                 });
             });
