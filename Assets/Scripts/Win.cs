@@ -9,6 +9,10 @@ public class Win : MonoBehaviour
 
     void heroWalkIn(GameObject hero)
     {
+        if (hero.GetComponent<Hero>().IsDead()) {
+            return;
+        }
+
         var manager = GameObject.Find("Transition").GetComponent<TransitionManager>();
         hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
         hero.GetComponent<Hero>().Win();

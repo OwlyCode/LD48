@@ -98,7 +98,8 @@ public class Hero : MonoBehaviour
 
     public bool isInvulnerable()
     {
-        return locked || dead;
+        Debug.Log(win);
+        return locked || dead || win;
     }
 
     public void Unlock()
@@ -129,6 +130,11 @@ public class Hero : MonoBehaviour
     public void OnMoveDown()
     {
         moveDown = !moveDown;
+    }
+
+    public bool IsDead()
+    {
+        return dead;
     }
 
     public void OnToggleLight()

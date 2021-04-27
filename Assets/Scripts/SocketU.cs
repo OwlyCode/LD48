@@ -12,7 +12,7 @@ public class SocketU : MonoBehaviour
         GetComponent<AudioSource>().Play();
 
         hero.GetComponentInChildren<Animator>().SetTrigger("Victory");
-        hero.GetComponent<Hero>().Lock();
+        hero.GetComponent<Hero>().Win();
 
         GameObject.Find("Bubbles").GetComponent<ParticleSystem>().Play();
 
