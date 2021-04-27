@@ -58,7 +58,7 @@ public class Hero : MonoBehaviour
             if (transform.position == target) {
                 moving = false;
 
-                if (!moveLeft && !moveRight && !moveDown && !moveUp) {
+                if (!moveLeft && !moveRight && !moveDown && !moveUp && !dead && !win) {
                     GetComponentInChildren<Animator>().SetTrigger("Idle");
                 }
 
